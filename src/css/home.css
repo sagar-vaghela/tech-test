@@ -1,0 +1,16 @@
+.container{
+    margin-top: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 8rem;
+    padding-top: 6rem;
+    height: 90px;
+}
+.left{
+    flex: 1;
+  height: 100px;
+}
+.left-wrapper{
+    flex: 1;
+}
