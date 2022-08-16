@@ -1,5 +1,3 @@
-
-
 import { initialStateType } from '../interfaces';
 
 const initialState: initialStateType = {

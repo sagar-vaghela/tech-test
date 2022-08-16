@@ -1,18 +1,17 @@
-/* eslint-disable import/prefer-default-export */
 import ErrorUnauthorized from './errorUnauthorized';
 
 const createFetchFor =
   (init: RequestInit | undefined) =>
   async (url: RequestInfo | URL, params = {}) => {
-    const { headers: HeaderParams = {}, ...rest } : any = params;
+    const { headers: HeaderParams = {}, ...rest }: any = params;
     const response = await fetch(url, {
       headers: {
         Accept: 'application/json',
-        ...HeaderParams,
+        ...HeaderParams
       },
 
       ...init,
-      ...rest,
+      ...rest
     });
     if (!response.ok) {
       if (response.status === 401) {
@@ -28,7 +27,7 @@ const createFetchFor =
       apiError.ok = false;
       throw apiError;
     }
-    return response.json();
+    return await response.json();
   };
 
 export const get = createFetchFor({ method: 'GET' });
