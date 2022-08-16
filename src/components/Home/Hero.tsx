@@ -1,12 +1,12 @@
-// import { Link } from "react-router-dom";
 import Typography from '@material-ui/core/Typography';
+import { Button } from "@material-ui/core";
+import SlideImage from '../image/image.svg';
 
 const Hero = () => {
   return (
     <div className="container">
       <div className="left">
         <div className="left-wrapper">
-          
           <Typography variant="h2">
             Sort out Your <br /> Spring Look
           </Typography>
@@ -15,19 +15,17 @@ const Hero = () => {
             big one for your company.
           </Typography>
           <div style={{marginTop: '25px'}}>
-          {/* <Link to={`/categories`}> 
-           <Button> Shop </Button>
-          </Link> */}
+           <Button href="/categories" variant="contained" style={{background: '#F86338', color: 'white', textTransform: 'none'}}>{'Shop > '}</Button>
           </div>
         </div>
       </div>
 
-      {/* <Right>
-        <RightContainer>
-          <Image src="https://i.ibb.co/gTYrRfZ/shop-image2.jpg" />
-          <Image src="https://i.ibb.co/gTYrRfZ/shop-image2.jpg" />
-        </RightContainer>
-      </Right> */}
+      <div className="right">
+        <div className="right-container">
+          <img alt='' src={SlideImage} />
+          <img alt='' src={SlideImage} />
+        </div>
+      </div>
     </div>
   );
 };
