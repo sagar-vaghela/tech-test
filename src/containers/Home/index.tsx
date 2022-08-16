@@ -1,7 +1,10 @@
+import Hero from "../../components/Home/Hero";
+import '../../css/home.css';
+
 const Home = () => {
   return (
     <div>
-        Home
+        <Hero />
     </div>
   );
 };
