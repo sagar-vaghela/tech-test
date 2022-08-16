@@ -1,0 +1,47 @@
+.mobilephone.MuiTypography-root {
+    padding-top: 20px;
+    margin-left: 93px;
+}
+
+.headerlogo {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+}
+
+.avtarlogo.MuiAvatar-root {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    margin: 5px;
+    display: inline-flex;
+}
+
+.avtar {
+    padding-top: 25px;
+    margin-left: 281px;
+}
+
+.details {
+    flex: 1;
+    display: flex;
+    padding: 10px;
+    margin-left: 93px;
+}
+
+.homepage.MuiTypography-root {
+    margin: 15px;
+    padding-top: 25px;
+
+}
+
+.iconsection {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-top: 35px;
+    flex-basis: 10%;
+    margin-right: 140px;
+}
