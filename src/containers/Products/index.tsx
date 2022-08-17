@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import '../../css/product.css';
@@ -15,6 +15,11 @@ import Typography from '@material-ui/core/Typography';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProducts, getAllCategories, getSpecificProducts } from '../../actions';
+import usePagination from '../../lib/pagination';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,14 +41,77 @@ function valuetext(value: any) {
 }
 const Products = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState([20, 37]);
+  const [value, setValue]: any = React.useState();
   const [age, setAge] = React.useState('');
+  const [products, setProducts] = React.useState([]);
+  const [category, setCategory] = React.useState([]);
+  const [selectCategory, setSelectCategory]: any = React.useState([]);
+
   const handleChange1 = (event: React.ChangeEvent<{ value: unknown }>) => {
     setAge(event.target.value as string);
   };
   const handleChange = (newValue: any) => {
     setValue(newValue);
   };
+
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state: any) => state.productData.isLoading)
+  const getProductsList = useSelector((state: any) => state.productData.products)
+  const getCategoriesList = useSelector((state: any) => state.productData.product)
+
+  // console.log("getProductsList", getProductsList);
+  // console.log("getCategoriesList", getCategoriesList);
+  // console.log("isLoading", isLoading);
+
+  useEffect(() => {
+    dispatch(getProducts());
+    dispatch(getAllCategories());
+
+  }, [])
+
+  useEffect(() => {
+    if (getProductsList.length > 0 || getCategoriesList.length > 0) {
+      setProducts(getProductsList);
+      setCategory(getCategoriesList);
+    }
+
+  }, [getProductsList || getCategoriesList])
+
+
+  useEffect(() => {
+    sliderProducts();
+  }, [value]);
+
+  const sliderProducts = () => {
+    const sliderProduct = getProductsList.filter((item: { price: number; }) => item.price <= value);
+    setProducts(sliderProduct);
+  }
+
+  const specificCategory = (selectCategory: string) => {
+    dispatch(getSpecificProducts(selectCategory));
+  }
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchValue = e.currentTarget.value;
+    const sliderProduct = getProductsList.filter((item: { title: string; }) => item.title.includes(searchValue));
+  console.log("sliderProduct", sliderProduct);
+    
+    setProducts(sliderProduct);
+  };
+  const [page, setPage] = useState(1);
+  const PER_PAGE = 6;
+
+  const count = Math.ceil(products.length / PER_PAGE);
+  const _DATA = usePagination(products, PER_PAGE);
+
+
+  const handleChangePagination = (e: any, p: number) => {
+    setPage(p);
+    _DATA.jump(p);
+  };
+
+  console.log("_DATA", _DATA);
+  
   return (
     <div className={classes.root}>
       <Grid container spacing={3} className={'containerClass'}>
@@ -56,23 +124,25 @@ const Products = () => {
               <img src={Filter} alt="" />
             </Grid>
           </Grid>
+
           <Grid className={'rangeSliderClass'}>
-            <Slider
-              value={value}
-              onChange={handleChange}
-              valueLabelDisplay="auto"
-              aria-labelledby="range-slider"
-              getAriaValueText={valuetext}
-            />
-            <Grid container spacing={3}>
-              <Grid item xs={6}>
-                Range
+            <div>
+              <Slider
+                min={0}
+                max={1000}
+                onChange={(event, value) => handleChange(value)}
+              />
+              <Grid container spacing={3}>
+                <Grid item xs={6}>
+                  Range
+                </Grid>
+                <Grid item xs={6} className={'alignRight'}>
+                  $0-${value}
+                </Grid>
               </Grid>
-              <Grid item xs={6} className={'alignRight'}>
-                $5-$20
-              </Grid>
-            </Grid>
+            </div>
           </Grid>
+
           <Grid className={'colorSection'}>
             <Grid item xs={12} className={'titleClass'}>
               Color
@@ -108,70 +178,28 @@ const Products = () => {
               </Grid>
             </Grid>
           </Grid>
+
           <Grid className={'categarySection'}>
             <Grid item xs={12} className={'titleClass'}>
               Categories
             </Grid>
-            <Grid className={'categarySectionContent'}>
-              <Grid container spacing={3} className={'categaryD'}>
-                <Grid item xs={10}>
-                  Dresses
-                </Grid>
-                <Grid item xs={2} className={'alignRight'}>
-                  <img src={RightArr} alt="" />
-                </Grid>
-              </Grid>
-              <Grid container spacing={3} className={'categaryD'}>
-                <Grid item xs={10}>
-                  Shirt and Top
-                </Grid>
-                <Grid item xs={2} className={'alignRight'}>
-                  <img src={RightArr} alt="" />
+
+            {category.length > 0 && category?.map((category: any, i: number) => (
+              <Grid className={'categarySectionContent'} key={i} onClick={() => specificCategory(category)}>
+                <Grid container spacing={3} className={'categaryD'}>
+                  <Grid item xs={10}>
+                    {category}
+                  </Grid>
+                  <Grid item xs={2} className={'alignRight'}>
+                    <img src={RightArr} alt="" />
+                  </Grid>
                 </Grid>
               </Grid>
-              <Grid container spacing={3} className={'categaryD'}>
-                <Grid item xs={10}>
-                  Sweater & Cardigans
-                </Grid>
-                <Grid item xs={2} className={'alignRight'}>
-                  <img src={RightArr} alt="" />
-                </Grid>
-              </Grid>
-              <Grid container spacing={3} className={'categaryD'}>
-                <Grid item xs={10}>
-                  Outwears
-                </Grid>
-                <Grid item xs={2} className={'alignRight'}>
-                  <img src={RightArr} alt="" />
-                </Grid>
-              </Grid>
-              <Grid container spacing={3} className={'categaryD'}>
-                <Grid item xs={10}>
-                  Bags
-                </Grid>
-                <Grid item xs={2} className={'alignRight'}>
-                  <img src={RightArr} alt="" />
-                </Grid>
-              </Grid>
-              <Grid container spacing={3} className={'categaryD'}>
-                <Grid item xs={10}>
-                  Shoes
-                </Grid>
-                <Grid item xs={2} className={'alignRight'}>
-                  <img src={RightArr} alt="" />
-                </Grid>
-              </Grid>
-              <Grid container spacing={3} className={'categaryD'}>
-                <Grid item xs={10}>
-                  Accesories
-                </Grid>
-                <Grid item xs={2} className={'alignRight'}>
-                  <img src={RightArr} alt="" />
-                </Grid>
-              </Grid>
-              <Grid className={'loadMore'}>Load More</Grid>
-            </Grid>
+            ))
+            }
+            <Grid className={'loadMore'}>Load More</Grid>
           </Grid>
+
         </Grid>
         <Grid item xs={9}>
           <Grid>
@@ -182,6 +210,7 @@ const Products = () => {
                   placeholder="Search Products"
                   type="search"
                   variant="outlined"
+                  onChange={handleSearchChange}
                 />
                 <Grid className="searchInputIcon">
                   <img src={Search} alt="" />
@@ -192,7 +221,7 @@ const Products = () => {
           <Grid className={'pagignationShowDetails'}>
             <Grid container spacing={3}>
               <Grid item xs={6} className={'showItem'}>
-                Showing 1-9 Results
+                Showing {products.length} Results
               </Grid>
               <Grid item xs={6} className={'alignRight'}>
                 <Grid className={'sortTxt'}>Sort By</Grid>
@@ -215,70 +244,48 @@ const Products = () => {
           </Grid>
           <Grid className="imagListSection">
             <Grid container spacing={3} className={'ImgListContent'}>
-              <Grid item xs={4}>
-                <Grid className={'ImgContainer'}>
-                  <Grid className={'ContainerImg'}>
-                    <img src={ImgContainer} alt="" />
-                    <Grid className={'HeartImgSection'}>
-                      <img className={'HeartImg'} src={Heart} alt="" />
+
+              {_DATA.currentData().map((product: any, i: number) => 
+                (
+            <Link to= "/productdetails" key={i}>
+
+                <Grid item xs={4} >
+
+                  <Grid className={'ImgContainer'}>
+                    <Grid className={'ContainerImg'}>
+                      <img height={296} src={product.image} alt="" />
+                      <Grid className={'HeartImgSection'}>
+                        <img className={'HeartImg'} src={Heart} alt="" />
+                      </Grid>
                     </Grid>
-                  </Grid>
+       
                   <Grid className={'ImgListContentDetails'}>
-                    <Typography className={'title'}>Bags</Typography>
+                    <Typography className={'title'}>{product.category}</Typography>
                     <Typography variant="h5" className={'subTitle'}>
-                      Queen’s Summer
+                      {product.title}
                     </Typography>
-                    <Typography className={'productType'}>Medium Shoulder Bag</Typography>
                     <Typography variant="h5" className={'prize'}>
-                      $1000
+                      {product.price}
                     </Typography>
                   </Grid>
                 </Grid>
+
               </Grid>
-              <Grid item xs={4}>
-                <Grid className={'ImgContainer'}>
-                  <Grid className={'ContainerImg'}>
-                    <img src={ImgContainer} alt="" />
-                    <Grid className={'HeartImgSection'}>
-                      <img className={'HeartImg'} src={Heart} alt="" />
-                    </Grid>
-                  </Grid>
-                  <Grid className={'ImgListContentDetails'}>
-                    <Typography className={'title'}>Bags</Typography>
-                    <Typography variant="h5" className={'subTitle'}>
-                      Queen’s Summer
-                    </Typography>
-                    <Typography className={'productType'}>Medium Shoulder Bag</Typography>
-                    <Typography variant="h5" className={'prize'}>
-                      $1000
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={4}>
-                <Grid className={'ImgContainer'}>
-                  <Grid className={'ContainerImg'}>
-                    <img src={ImgContainer} alt="" />
-                    <Grid className={'HeartImgSection'}>
-                      <img className={'HeartImg'} src={Heart} alt="" />
-                    </Grid>
-                  </Grid>
-                  <Grid className={'ImgListContentDetails'}>
-                    <Typography className={'title'}>Bags</Typography>
-                    <Typography variant="h5" className={'subTitle'}>
-                      Queen’s Summer
-                    </Typography>
-                    <Typography className={'productType'}>Medium Shoulder Bag</Typography>
-                    <Typography variant="h5" className={'prize'}>
-                      $1000
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
+              </Link>
+
+              )
+              )}
             </Grid>
           </Grid>
           <Grid className={'pagignationSection'}>
-            <Pagination count={10} showFirstButton showLastButton />
+            <Pagination
+              count={count}
+              size="large"
+              page={page}
+              variant="outlined"
+              shape="rounded"
+              onChange={handleChangePagination}
+            />
           </Grid>
         </Grid>
       </Grid>
