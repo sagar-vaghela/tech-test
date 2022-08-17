@@ -23,31 +23,21 @@ import { getSingleProduct } from '../../actions';
 
 const option = ['XS', 'S', 'ML', 'L', 'XL'];
 
-const ProdDetail = () => {
+const ProdDetail = (props: any) => {
   const [countValue, setCountvalue] = useState(0);
   const [optionvalue, setOptionValue] = useState(option[0]);
-
-  const dispatch = useDispatch();
-  const isLoading = useSelector((state: any) => state.productData.isLoading);
-  const getSignleProduct = useSelector((state: any) => state.productData.products);
-
-  console.log('getSignleProduct==', getSignleProduct);
-
-  useEffect(() => {
-    dispatch(getSingleProduct(1));
-  }, []);
 
   return (
     <>
       <Grid className="wrapper">
         <Grid className={'imagecontainer'}>
           <Grid className={'image'}>
-            <img src={imgContainer} alt="" />
+            <img src={props.image} alt="" />
           </Grid>
         </Grid>
         <Grid className={'infocontainer'}>
           <Typography variant="h4" className="titledetails">
-            Classic Blouse IX
+            {props.productDetail.title}
           </Typography>
           <Grid container spacing={3}>
             <Grid item md={3}>
@@ -59,7 +49,7 @@ const ProdDetail = () => {
           </Grid>
           <Grid container spacing={3} style={{ marginBottom: '15px' }}>
             <Grid item md={4}>
-              <Typography className="dollar"> $1000 </Typography>
+              <Typography className="dollar"> {props.productDetail.price} </Typography>
             </Grid>
             <Grid item sm={8}>
               <Typography className="canceldollar"> $1500 </Typography>
@@ -75,7 +65,7 @@ const ProdDetail = () => {
           </Grid>
           <Grid container spacing={3} style={{ marginBottom: '15px' }}>
             <Grid item md={2}>
-              <Typography className="sku"> Category </Typography>
+              <Typography className="sku">  {props.productDetail.category} </Typography>
             </Grid>
             <Grid item sm={8}>
               <Typography className="skuresponse">: Dresses</Typography>

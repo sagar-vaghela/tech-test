@@ -1,18 +1,21 @@
 import { useParams } from 'react-router-dom';
 import ProdDetail from '../../components/Details/ProdDetails';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSingleProduct } from '../../actions';
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  console.log('id', id);
+  const { id }:any = useParams();
+  const getSignleProduct = useSelector((state: any) => state.productData.product);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-
-  // }, [id]);
+  useEffect(() => {
+    dispatch(getSingleProduct(id));
+  }, [id]);
 
   return (
     <div>
-      <ProdDetail />
+      <ProdDetail productDetail={getSignleProduct}/>
     </div>
   );
 };
