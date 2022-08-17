@@ -1,6 +1,6 @@
 import Typography from '@material-ui/core/Typography';
 import { Button } from '@material-ui/core';
-import SlideImage from '../image/image.svg';
+import SlideImage from '../../components/image/image.svg';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {

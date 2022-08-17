@@ -15,19 +15,19 @@ const Header = (props: any) => {
 
   return (
     <div>
-      <Grid container spacing={3}>
-        <Grid item xs>
+      <Grid container spacing={3} xs={12}>
+        <Grid item sm={3} >
           <Typography className="mobilephone">
             <CallIcon style={{ paddingTop: '10px' }} />
             +022 319 821 967
           </Typography>
         </Grid>
-        <Grid item xs>
+        <Grid item sm={6}>
           <div className="headerlogo">
             <img src={HeaderIcon} alt="" />
           </div>
         </Grid>
-        <Grid item xs>
+        <Grid item sm={3}>
           <div className="avtar">
             {avtarname.map((name, i) => (
               <Avatar key={i} className="avtarlogo">
