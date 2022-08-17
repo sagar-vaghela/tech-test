@@ -1,153 +1,152 @@
 .wrapper {
-    padding: 50px;
-    display: flex;
-    /* text-align: center; */
+  padding: 50px;
+  display: flex;
+  /* text-align: center; */
 }
 
 .imagecontainer {
-    flex: 1;
+  flex: 1;
 }
 
-.image>img {
-    margin-left: 10rem;
-    height: 560px;
-    width: 608px;
+.image > img {
+  margin-left: 10rem;
+  height: 560px;
+  width: 608px;
 }
 
 .infocontainer {
-    flex: 2;
-    padding: 0px 50px;
-    margin-right: 5rem;
-    padding-left: 30px;
+  flex: 2;
+  padding: 0px 50px;
+  margin-right: 5rem;
+  padding-left: 30px;
 }
 
 .titledetails.MuiTypography-root {
-    font-weight: 700;
-    margin-bottom: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .avalibility.MuiTypography-root {
-    color: #515151;
-
+  color: #515151;
 }
 
 .availimeasure.MuiTypography-root {
-    color: black;
-    font-weight: 400;
+  color: black;
+  font-weight: 400;
 }
 
 .dollar.MuiTypography-root {
-    color: #F3692E;
-    font-weight: 700;
-    font-size: 39px;
+  color: #f3692e;
+  font-weight: 700;
+  font-size: 39px;
 }
 
 .sku.MuiTypography-root {
-    font-weight: 700;
-    font-size: 16px;
-    color: #11142D;
+  font-weight: 700;
+  font-size: 16px;
+  color: #11142d;
 }
 
 .skuresponse.MuiTypography-root {
-    color: #666666;
-    font-weight: 400;
-    font-size: 16px;
+  color: #666666;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .canceldollar.MuiTypography-root {
-    color: #9A9AB0;
-    font-weight: 700;
-    font-size: 16px;
-    padding-top: 19px;
-    text-decoration: line-through;
+  color: #9a9ab0;
+  font-weight: 700;
+  font-size: 16px;
+  padding-top: 19px;
+  text-decoration: line-through;
 }
 
 .InputField.MuiSelect-root {
-    background: rgba(183, 194, 205, 0.2);
-    border: 1px solid black;
-    box-sizing: border-box;
-    border-radius: 8px;
-    height: 35px;
-    padding-top: 10px;
+  background: rgba(183, 194, 205, 0.2);
+  border: 1px solid black;
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 35px;
+  padding-top: 10px;
 }
 
 .InputField.MuiSelect-root {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .InputField.MuiSelect-outlined {
-    width: "85px";
+  width: '85px';
 }
 
 .InputField.MuiInput-input {
-    text-align: "center";
-    color: "#99A9B8";
-    width: "25px";
+  text-align: 'center';
+  color: '#99A9B8';
+  width: '25px';
 }
 
 .plusminusCard {
-    display: "inline-block";
-    background: "#FFFFFF";
-    border: "1px solid rgba(183, 194, 205, 0.5)";
-    box-sizing: "border-box";
-    border-radius: "8px";
-    padding: "5px";
+  display: 'inline-block';
+  background: '#FFFFFF';
+  border: '1px solid rgba(183, 194, 205, 0.5)';
+  box-sizing: 'border-box';
+  border-radius: '8px';
+  padding: '5px';
 }
 
 .plusMinusbutton {
-    background: "rgba(183, 194, 205, 0.2)";
-    border: "1px solid rgba(183, 194, 205, 0.1)";
-    height: "35px";
-    min-width: "40px";
+  background: 'rgba(183, 194, 205, 0.2)';
+  border: '1px solid rgba(183, 194, 205, 0.1)';
+  height: '35px';
+  min-width: '40px';
 }
 
 .plusMinusbutton.MuiSelect-outlined {
-    width: "35px";
+  width: '35px';
 }
 
 .plusMinusbutton.MuiInput-input {
-    text-align: "center";
-    color: "#99A9B8";
-    width: "25px";
+  text-align: 'center';
+  color: '#99A9B8';
+  width: '25px';
 }
 
 .MuiInput-input::-webkit-inner-spin-button {
-    -webkit-appearance: 'none',
+  -webkit-appearance: 'none';
 }
 
 .MuiInput-input::-webkit-outer-spin-button {
-    -webkit-appearance: 'none',
+  -webkit-appearance: 'none';
 }
 
 .addtocart {
-    padding-top: 15px;
+  padding-top: 15px;
 }
 
 .button {
-    color: #F3692E;
+  color: #f3692e;
 }
 
 .starbutton.MuiButton-outlined {
-    border-color: #F3692E;
+  border-color: #f3692e;
 }
 
 .spacecontainer {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .descriptionWrapper {
-    padding: 50px;
+  padding: 50px;
 }
 
 .descriptiontitle.MuiTypography-root {
-    font-weight: 700;
-    font-size: 24px;
-    margin-left: 30px;
+  font-weight: 700;
+  font-size: 24px;
+  margin-left: 30px;
 }
 
 .description.MuiTypography-root {
-    font-weight: 400;
-    font-size: 16px;
-    position: absolute;
-    justify-content: left;
+  font-weight: 400;
+  font-size: 16px;
+  position: absolute;
+  justify-content: left;
 }

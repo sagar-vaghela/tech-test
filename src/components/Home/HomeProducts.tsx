@@ -1,16 +1,16 @@
-import Product from './Product'
+import Product from './Product';
 
 const HomeProducts = () => {
-    return (
-        <div className='homeproduct-container'>
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-        </div>
-    )
-}
+  return (
+    <div className="homeproduct-container">
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+    </div>
+  );
+};
 
 export default HomeProducts;

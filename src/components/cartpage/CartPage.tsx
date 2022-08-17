@@ -49,17 +49,20 @@ const CartPage = () => {
               </TableCell>
               <TableCell
                 align="right"
-                style={{ color: 'white', fontWeight: 700, fontSize: '24px' }}>
+                style={{ color: 'white', fontWeight: 700, fontSize: '24px' }}
+              >
                 Price
               </TableCell>
               <TableCell
                 align="right"
-                style={{ color: 'white', fontWeight: 700, fontSize: '24px' }}>
+                style={{ color: 'white', fontWeight: 700, fontSize: '24px' }}
+              >
                 Quantity
               </TableCell>
               <TableCell
                 align="right"
-                style={{ color: 'white', fontWeight: 700, fontSize: '24px' }}>
+                style={{ color: 'white', fontWeight: 700, fontSize: '24px' }}
+              >
                 Total
               </TableCell>
             </TableRow>
@@ -67,7 +70,7 @@ const CartPage = () => {
           <TableBody className="tablebody">
             {rows.map((option) => (
               <TableRow key={option.name}>
-                <TableCell component="th" scope="row" style={{ fontWeight: 700, fontSize: '24px',}}>
+                <TableCell component="th" scope="row" style={{ fontWeight: 700, fontSize: '24px' }}>
                   {' '}
                   <img src={TableIcon} alt="" /> {option.name}{' '}
                 </TableCell>
@@ -140,7 +143,8 @@ const CartPage = () => {
           <Button
             variant="contained"
             size="large"
-            style={{ backgroundColor: '#F86338', color: 'white', width: '488px' }}>
+            style={{ backgroundColor: '#F86338', color: 'white', width: '488px' }}
+          >
             Checkout
           </Button>
         </Grid>

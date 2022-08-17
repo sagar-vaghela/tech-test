@@ -9,10 +9,9 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 const avtarname = ['Fb', 'Tw', 'Ig', 'Yt'];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Header = (props:any) => {
+const Header = (props: any) => {
+  const { renderlocation } = props;
 
-  const {renderlocation} = props;
-  
   return (
     <div>
       <Grid container spacing={3}>
@@ -30,14 +29,14 @@ const Header = (props:any) => {
         <Grid item xs>
           <div className="avtar">
             {avtarname.map((name, i) => (
-              <Avatar key={i} className="avtarlogo">{name}</Avatar>
+              <Avatar key={i} className="avtarlogo">
+                {name}
+              </Avatar>
             ))}
           </div>
         </Grid>
       </Grid>
-      <div style={{paddingLeft: "90px",paddingTop:'10px'}}>
-      {renderlocation()}
-      </div>
+      <div style={{ paddingLeft: '90px', paddingTop: '10px' }}>{renderlocation()}</div>
       <Grid container xs={12}>
         <Grid item sm={9}>
           <div className="details">

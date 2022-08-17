@@ -17,7 +17,7 @@ import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProducts, getAllCategories, getSpecificProducts } from '../../actions';
+import { getProducts, getCategories, getSpecificProducts } from '../../actions';
 import usePagination from '../../lib/pagination';
 import { Link } from 'react-router-dom';
 
@@ -55,9 +55,9 @@ const Products = () => {
   };
 
   const dispatch = useDispatch();
-  const isLoading = useSelector((state: any) => state.productData.isLoading)
-  const getProductsList = useSelector((state: any) => state.productData.products)
-  const getCategoriesList = useSelector((state: any) => state.productData.product)
+  const isLoading = useSelector((state: any) => state.productData.isLoading);
+  const getProductsList = useSelector((state: any) => state.productData.products);
+  const getCategoriesList = useSelector((state: any) => state.productData.product);
 
   // console.log("getProductsList", getProductsList);
   // console.log("getCategoriesList", getCategoriesList);
@@ -65,37 +65,36 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(getProducts());
-    dispatch(getAllCategories());
-
-  }, [])
+    dispatch(getCategories());
+  }, []);
 
   useEffect(() => {
     if (getProductsList.length > 0 || getCategoriesList.length > 0) {
       setProducts(getProductsList);
       setCategory(getCategoriesList);
     }
-
-  }, [getProductsList || getCategoriesList])
-
+  }, [getProductsList || getCategoriesList]);
 
   useEffect(() => {
     sliderProducts();
   }, [value]);
 
   const sliderProducts = () => {
-    const sliderProduct = getProductsList.filter((item: { price: number; }) => item.price <= value);
+    const sliderProduct = getProductsList.filter((item: { price: number }) => item.price <= value);
     setProducts(sliderProduct);
-  }
+  };
 
   const specificCategory = (selectCategory: string) => {
     dispatch(getSpecificProducts(selectCategory));
-  }
+  };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchValue = e.currentTarget.value;
-    const sliderProduct = getProductsList.filter((item: { title: string; }) => item.title.includes(searchValue));
-  console.log("sliderProduct", sliderProduct);
-    
+    const sliderProduct = getProductsList.filter((item: { title: string }) =>
+      item.title.includes(searchValue)
+    );
+    console.log('sliderProduct', sliderProduct);
+
     setProducts(sliderProduct);
   };
   const [page, setPage] = useState(1);
@@ -104,14 +103,13 @@ const Products = () => {
   const count = Math.ceil(products.length / PER_PAGE);
   const _DATA = usePagination(products, PER_PAGE);
 
-
   const handleChangePagination = (e: any, p: number) => {
     setPage(p);
     _DATA.jump(p);
   };
 
-  console.log("_DATA", _DATA);
-  
+  console.log('_DATA', _DATA);
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3} className={'containerClass'}>
@@ -127,11 +125,7 @@ const Products = () => {
 
           <Grid className={'rangeSliderClass'}>
             <div>
-              <Slider
-                min={0}
-                max={1000}
-                onChange={(event, value) => handleChange(value)}
-              />
+              <Slider min={0} max={1000} onChange={(event, value) => handleChange(value)} />
               <Grid container spacing={3}>
                 <Grid item xs={6}>
                   Range
@@ -184,22 +178,25 @@ const Products = () => {
               Categories
             </Grid>
 
-            {category.length > 0 && category?.map((category: any, i: number) => (
-              <Grid className={'categarySectionContent'} key={i} onClick={() => specificCategory(category)}>
-                <Grid container spacing={3} className={'categaryD'}>
-                  <Grid item xs={10}>
-                    {category}
-                  </Grid>
-                  <Grid item xs={2} className={'alignRight'}>
-                    <img src={RightArr} alt="" />
+            {category.length > 0 &&
+              category?.map((category: any, i: number) => (
+                <Grid
+                  className={'categarySectionContent'}
+                  key={i}
+                  onClick={() => specificCategory(category)}
+                >
+                  <Grid container spacing={3} className={'categaryD'}>
+                    <Grid item xs={10}>
+                      {category}
+                    </Grid>
+                    <Grid item xs={2} className={'alignRight'}>
+                      <img src={RightArr} alt="" />
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
-            ))
-            }
+              ))}
             <Grid className={'loadMore'}>Load More</Grid>
           </Grid>
-
         </Grid>
         <Grid item xs={9}>
           <Grid>
@@ -244,37 +241,30 @@ const Products = () => {
           </Grid>
           <Grid className="imagListSection">
             <Grid container spacing={3} className={'ImgListContent'}>
+              {_DATA.currentData().map((product: any, i: number) => (
+                <Grid item xs={4} key={i}>
+                  <Link to={`/product/${product.id}`} className="Link-Decorate">
+                    <Grid className={'ImgContainer'}>
+                      <Grid className={'ContainerImg'}>
+                        <img height={296} src={product.image} alt="" />
+                        <Grid className={'HeartImgSection'}>
+                          <img className={'HeartImg'} src={Heart} alt="" />
+                        </Grid>
+                      </Grid>
 
-              {_DATA.currentData().map((product: any, i: number) => 
-                (
-            <Link to= "/productdetails" key={i}>
-
-                <Grid item xs={4} >
-
-                  <Grid className={'ImgContainer'}>
-                    <Grid className={'ContainerImg'}>
-                      <img height={296} src={product.image} alt="" />
-                      <Grid className={'HeartImgSection'}>
-                        <img className={'HeartImg'} src={Heart} alt="" />
+                      <Grid className={'ImgListContentDetails'}>
+                        <Typography className={'title'}>{product.category}</Typography>
+                        <Typography variant="h5" className={'subTitle'}>
+                          {product.title}
+                        </Typography>
+                        <Typography variant="h5" className={'prize'}>
+                          {product.price}
+                        </Typography>
                       </Grid>
                     </Grid>
-       
-                  <Grid className={'ImgListContentDetails'}>
-                    <Typography className={'title'}>{product.category}</Typography>
-                    <Typography variant="h5" className={'subTitle'}>
-                      {product.title}
-                    </Typography>
-                    <Typography variant="h5" className={'prize'}>
-                      {product.price}
-                    </Typography>
-                  </Grid>
+                  </Link>
                 </Grid>
-
-              </Grid>
-              </Link>
-
-              )
-              )}
+              ))}
             </Grid>
           </Grid>
           <Grid className={'pagignationSection'}>
