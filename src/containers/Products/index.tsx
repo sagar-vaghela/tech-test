@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import '../../css/product.css';
@@ -16,7 +15,9 @@ import Typography from '@material-ui/core/Typography';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
-import { getProductsLimit, getAllProducts } from '../../services/api';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProducts } from '../../actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,84 +37,29 @@ const useStyles = makeStyles((theme) => ({
 function valuetext(value: any) {
   return `${value}°C`;
 }
-interface Data {
-  id: number;
-  image: string;
-  title: string;
-  category: string;
-  price: number;
-}
-interface ProductsProps {
-  data: Array<Data>;
-}
-
-const Products: React.FC<ProductsProps> = () => {
-
+const Products = () => {
   const classes = useStyles();
-  const [value, setValue]: any = useState({
-    keyword: "",
-    price: "5",
-    color: "",
-    category: null,
-    sort: "asc",
-  });
-
-  const [allProducts, setAllProducts]: any = useState([]);
-  const [age, setAge] = useState('');
-  const [itemsPerPage, setItemsPerPage] = useState<number>(6);
-  const [page, setPage] = useState<number>(0);
-  const [isLoading, setLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    setLoading(true);
-    const getData = async () => {
-      const response = await getAllProducts();
-      const getAllData = await response;
-      setAllProducts(getAllData);
-      setLoading(false);
-    };
-
-    getData();
-  }, []);
-
-  useEffect(() => {
-    setLoading(true);
-    const getDataLimit = async () => {
-      const response = await getProductsLimit(page);
-      const getDataLimit = await response;
-      setAllProducts(getDataLimit);
-      setLoading(false);
-    };
-
-    getDataLimit();
-  }, [page]);
-
+  const [value, setValue] = React.useState([20, 37]);
+  const [age, setAge] = React.useState('');
   const handleChange1 = (event: React.ChangeEvent<{ value: unknown }>) => {
     setAge(event.target.value as string);
   };
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const target = event.currentTarget;
-    setValue({
-      ...value,
-      [target.name]: target.value,
-    });
+  const handleChange = (newValue: any) => {
+    setValue(newValue);
   };
 
-  const paginate = (
-    array_to_paginate: Array<Data>,
-    page_size: number,
-    page_number: number
-  ) => {
-    return array_to_paginate.slice(
-      page_number * page_size,
-      page_number * page_size + page_size
-    );
-  }
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state: any) => state.productData.isLoading)
+  const products = useSelector((state: any) => state.productData.products)
 
-  const changePage = (page: number) => {
-    setPage(page);
-  }
+  console.log("products", products);
+  console.log("isLoading", isLoading);
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [])
+  
+
 
   return (
     <div className={classes.root}>
@@ -128,39 +74,22 @@ const Products: React.FC<ProductsProps> = () => {
             </Grid>
           </Grid>
           <Grid className={'rangeSliderClass'}>
-            {/* <Slider
+            <Slider
               value={value}
               onChange={handleChange}
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               getAriaValueText={valuetext}
-            /> */}
-            <div>
-              <input
-                type="range"
-                min="0"
-                max="20"
-                step="1"
-                id="customRange3"
-                name="price"
-                defaultValue={value.price}
-                onChange={handleChange}
-              ></input>
-              <label htmlFor="customRange3" className="form-label">
-                Range: $0 - ${value.price}
-              </label>
-            </div>
-            {/* <Grid container spacing={3}>
+            />
+            <Grid container spacing={3}>
               <Grid item xs={6}>
                 Range
               </Grid>
               <Grid item xs={6} className={'alignRight'}>
-              ${value.price}
+                $5-$20
               </Grid>
-            </Grid> */}
-
+            </Grid>
           </Grid>
-
           <Grid className={'colorSection'}>
             <Grid item xs={12} className={'titleClass'}>
               Color
@@ -261,7 +190,6 @@ const Products: React.FC<ProductsProps> = () => {
             </Grid>
           </Grid>
         </Grid>
-
         <Grid item xs={9}>
           <Grid>
             <form className={classes.root} noValidate autoComplete="off">
@@ -278,7 +206,6 @@ const Products: React.FC<ProductsProps> = () => {
               </div>
             </form>
           </Grid>
-
           <Grid className={'pagignationShowDetails'}>
             <Grid container spacing={3}>
               <Grid item xs={6} className={'showItem'}>
@@ -303,95 +230,34 @@ const Products: React.FC<ProductsProps> = () => {
               </Grid>
             </Grid>
           </Grid>
-
-          {/* { allProducts?.map((item:any) => ( 
-          
-          <Grid className="imagListSection" key={item.id}>
+          <Grid className="imagListSection">
             <Grid container spacing={3} className={'ImgListContent'}>
-              <Grid item xs={4}>
-
-                <Grid className={'ImgContainer'}>
-                  <Grid className={'ContainerImg'}>
-
-                    <img src={item.image} alt="" />
-                    <Grid className={'HeartImgSection'}>
-                      <img className={'HeartImg'} src={Heart} alt="" />
-                    </Grid>
-                  </Grid>
-
-                  <Grid className={'ImgListContentDetails'}>
-                    <Typography className={'title'}>Bags</Typography>
-                    <Typography variant="h5" className={'subTitle'}>
-                    {item.category}
-                    </Typography>
-
-                    <Typography className={'productType'}>{item.title}</Typography>
-                    <Typography variant="h5" className={'prize'}>
-                    ${item.price}
-                    </Typography>
-
-                  </Grid>
-                </Grid>
-              </Grid>
-  
-            </Grid>
-          </Grid>
-          ))
-        } */}
-          <Grid className="imagListSection" >
-            {allProducts.length && !isLoading ? (
-              <div className="grid-products-cols mt-4" style={{ display: "grid" }}>
-                {paginate(allProducts, itemsPerPage, page)?.map((item) => (
-
-                  <Grid container spacing={3} className={'ImgListContent'} key={item.id}>
-                    <Grid item xs={4}>
-
-                      <Grid className={'ImgContainer'}>
-                        <Grid className={'ContainerImg'}>
-
-                          <img src={item.image} alt="" />
-                          <Grid className={'HeartImgSection'}>
-                            <img className={'HeartImg'} src={Heart} alt="" />
-                          </Grid>
-                        </Grid>
-
-                        <Grid className={'ImgListContentDetails'}>
-                          <Typography className={'title'}>Bags</Typography>
-                          <Typography variant="h5" className={'subTitle'}>
-                            {item.category}
-                          </Typography>
-
-                          <Typography className={'productType'}>{item.title}</Typography>
-                          <Typography variant="h5" className={'prize'}>
-                            ${item.price}
-                          </Typography>
-
-                        </Grid>
+              {products?.map((product: any, i: number) => 
+                (<Grid item xs={4} key={i}>
+                  <Grid className={'ImgContainer'}>
+                    <Grid className={'ContainerImg'}>
+                      <img src={product.image} alt="" />
+                      <Grid className={'HeartImgSection'}>
+                        <img className={'HeartImg'} src={Heart} alt="" />
                       </Grid>
                     </Grid>
-
+                    <Grid className={'ImgListContentDetails'}>
+                      <Typography className={'title'}>Bags</Typography>
+                      <Typography variant="h5" className={'subTitle'}>
+                        {product.title}
+                      </Typography>
+                      <Typography className={'productType'}>{product.category}</Typography>
+                      <Typography variant="h5" className={'prize'}>
+                        {product.price}
+                      </Typography>
+                    </Grid>
                   </Grid>
-
-                ))}
-              </div>
-            ) : isLoading ? (
-              <div className="d-flex justify-content-center my-5">
-                <div
-                  className="spinner-border"
-                  role="status"
-                  style={{
-                    color: "#f86338",
-                  }}
-                >
-                  <span className="visually-hidden">Loading...</span>
-                </div>
-              </div>
-            ) : (
-              <div className="text-center my-5">No item matched your query.</div>
-            )}
+                </Grid>)
+              )}
+            </Grid>
           </Grid>
           <Grid className={'pagignationSection'}>
-            <Pagination count={10} showFirstButton showLastButton onChange={(event, page) => changePage(page)} />
+            <Pagination count={10} showFirstButton showLastButton />
           </Grid>
         </Grid>
       </Grid>
