@@ -1,8 +1,15 @@
 import { Footer, Header } from './components';
 import { useGeolocated } from 'react-geolocated';
 import ShoppingRoutes from './routes';
+import { useEffect } from 'react';
 
 const App = () => {
+  useEffect(() => {
+    if (performance.navigation.type === 1) {
+      // localStorage.removeItem('cartId');
+    }
+  });
+
   const { coords, isGeolocationAvailable, isGeolocationEnabled } = useGeolocated({
     positionOptions: {
       enableHighAccuracy: false

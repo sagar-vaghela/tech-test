@@ -6,20 +6,12 @@ import {
   GET_PRODUCT_DETAILS_FAILED,
   GET_PRODUCT_DETAILS_STARTED,
   GET_PRODUCT_DETAILS_SUCCEEDED,
-  REMOVE_PRODUCT_FAILED,
-  REMOVE_PRODUCT_STARTED,
-  REMOVE_PRODUCT_SUCCEEDED,
   GET_SPECIFIC_PRODUCTS_STARTED,
   GET_SPECIFIC_PRODUCTS_SUCCEEDED,
   GET_SPECIFIC_PRODUCTS_FAILED,
   SELECT_CATEGORY_STARTED,
   SELECT_CATEGORY_SUCCEEDED,
   SELECT_CATEGORY_FAILED,
-  ADD_CART_STARTED,
-  ADD_CART_SUCCEEDED,
-  ADD_CART_FAILED,
-
-  
 } from '../lib/constants/actionTypes';
 import * as ProductService from '../services/api';
 
@@ -39,6 +31,17 @@ const getProductsFailed = (error: string) => ({
   error: true
 });
 
+export const getProducts = (): any => async (dispatch: any) => {
+  dispatch(getProductsStarted());
+  await ProductService.getProducts()
+    .then((res) => {
+      dispatch(getProductsSucceeded(res));
+    })
+    .catch((error) => {
+      dispatch(getProductsFailed('error.response'));
+    });
+};
+
 //Get Specific Product
 const getSpecificProductsStarted = () => ({
   type: GET_SPECIFIC_PRODUCTS_STARTED
@@ -54,6 +57,19 @@ const getSpecificProductsFailed = (error: string) => ({
   payload: error,
   error: true
 });
+
+export const getSpecificProducts =
+  (product: string): any =>
+  async (dispatch: any) => {
+    dispatch(getSpecificProductsStarted());
+    await ProductService.getSpecificProducts(product)
+      .then((res) => {
+        dispatch(getSpecificProductsSucceeded(res));
+      })
+      .catch((error) => {
+        dispatch(getSpecificProductsFailed('error.response'));
+      });
+  };
 
 //Get Categories
 const getCategoriesStarted = () => ({
@@ -71,6 +87,17 @@ const getCategoriesFailed = (error: string) => ({
   error: true
 });
 
+export const getCategories = (): any => async (dispatch: any) => {
+  dispatch(getCategoriesStarted());
+  await ProductService.getCategories()
+    .then((res) => {
+      dispatch(getCategoriesSucceeded(res));
+    })
+    .catch((error) => {
+      dispatch(getCategoriesFailed('error.response'));
+    });
+};
+
 //Get Single Product
 const getSingleStarted = () => ({
   type: GET_PRODUCT_DETAILS_STARTED
@@ -87,57 +114,6 @@ const getSingleFailed = (error: string) => ({
   error: true
 });
 
-//Add to Cart 
-const addCartStarted = () => ({
-  type: ADD_CART_STARTED
-});
-
-const addCartSucceeded = (data: any) => ({
-  type: ADD_CART_SUCCEEDED,
-  payload: data
-});
-
-const addCartFailed = (error: string) => ({
-  type: ADD_CART_FAILED,
-  payload: error,
-  error: true
-});
-
-export const getProducts = (): any => async (dispatch: any) => {
-  dispatch(getProductsStarted());
-  await ProductService.getProducts()
-    .then((res) => {
-      dispatch(getProductsSucceeded(res));
-    })
-    .catch((error) => {
-      dispatch(getProductsFailed('error.response'));
-    });
-};
-
-export const getSpecificProducts =
-  (product: string): any =>
-  async (dispatch: any) => {
-    dispatch(getSpecificProductsStarted());
-    await ProductService.getSpecificProducts(product)
-      .then((res) => {
-        dispatch(getSpecificProductsSucceeded(res));
-      })
-      .catch((error) => {
-        dispatch(getSpecificProductsFailed('error.response'));
-      });
-  };
-
-export const getCategories = (): any => async (dispatch: any) => {
-  dispatch(getCategoriesStarted());
-  await ProductService.getCategories()
-    .then((res) => {
-      dispatch(getCategoriesSucceeded(res));
-    })
-    .catch((error) => {
-      dispatch(getCategoriesFailed('error.response'));
-    });
-};
-
 export const getSingleProduct =
   (id: number): any =>
   async (dispatch: any) => {
@@ -148,17 +124,5 @@ export const getSingleProduct =
       })
       .catch((error) => {
         dispatch(getSingleFailed('error.response'));
-      });
-  };
-
-export const addCart = (payload: object): any => async (dispatch: any) => {
-    dispatch(addCartStarted());
-    await ProductService.addCart(payload)
-      .then((res) => {
-        localStorage.setItem('cartId', res.id)
-        dispatch(addCartSucceeded(res));
-      })
-      .catch((error) => {
-        dispatch(addCartFailed('error.response'));
       });
   };

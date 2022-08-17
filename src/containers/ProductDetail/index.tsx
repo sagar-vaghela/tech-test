@@ -18,23 +18,37 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import TrueIcon from '../../components/Icons/trueicon.svg';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSingleProduct } from '../../actions';
+import { addCart, getSingleProduct, updateCart } from '../../actions';
 
 const option = ['XS', 'S', 'ML', 'L', 'XL'];
 
 const ProductDetail = () => {
-  const { id }: any = useParams();
-
+  const { id } : any = useParams();
   const product = useSelector((state: any) => state.productData.product);
-
-  const dispatch = useDispatch();
-  const [countValue, setCountvalue] = useState(0);
+  const [countValue, setCountvalue] = useState(1);
   const [optionvalue, setOptionValue] = useState(option[0]);
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
   }, [id]);
 
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    const payload = {
+      userId: 5,
+      date: new Date(),
+      products:[{productId: id, quantity: countValue}]
+    }
+    const cartId: any = localStorage.getItem('cartId');
+    if(cartId) {
+      dispatch(updateCart(cartId, payload)); // update
+    }
+    else {
+      dispatch(addCart(payload));
+    }
+  }
+  
   return (
     <>
       <Grid className="wrapper">
@@ -88,7 +102,7 @@ const ProductDetail = () => {
             </Grid>
           </Grid>
           <Grid container spacing={3} style={{ marginBottom: '25px' }}>
-            <Grid className="InputField" item md={3}>
+            <Grid className="InputField" item md={4}>
               <TextField
                 size="small"
                 select
@@ -105,11 +119,12 @@ const ProductDetail = () => {
                 ))}
               </TextField>
             </Grid>
-            <Grid className="plusminusCard" item sm={3}>
+            <Grid className="plusminusCard" item sm={5}>
               <IconButton
                 className="plusMinusbutton"
                 size="small"
                 onClick={() => {
+                  if(countValue === 1) return;
                   setCountvalue(countValue - 1);
                 }}>
                 <Remove />
@@ -141,16 +156,17 @@ const ProductDetail = () => {
             </Grid>
           </Grid>
           <Grid container spacing={3}>
-            <Grid className="addtocart" item md={3}>
+            <Grid className="addtocart" item md={5}>
               <Button
                 variant="contained"
                 className="button"
+                onClick={handleAddToCart}
                 style={{ backgroundColor: '#F86338', color: 'white' }}>
                 Add to Cart
                 <ShoppingCartIcon style={{ marginLeft: '23px' }} />
               </Button>
             </Grid>
-            <Grid className="starbutton" item sm={9}>
+            <Grid className="starbutton" item sm={5}>
               <Button variant="outlined" className="starbutton" style={{ color: '#F86338' }}>
                 <StarBorderIcon />
               </Button>

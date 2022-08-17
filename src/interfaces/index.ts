@@ -3,6 +3,7 @@ import { Action } from '@reduxjs/toolkit';
 
 export interface initialStateType {
   productData: productDataType;
+  cartData: cartDataType;
 }
 
 export interface categoryType {
@@ -23,7 +24,14 @@ export interface productType {
 
 export interface productDataType {
   products: productType[];
-  product: any | undefined | null | productType;
+  product: any | undefined | null | productType | object;
+  isLoading: boolean;
+  error: IError | undefined | null;
+}
+
+export interface cartDataType {
+  carts: productType[];
+  cart: any | undefined | null | productType | object;
   isLoading: boolean;
   error: IError | undefined | null;
 }
