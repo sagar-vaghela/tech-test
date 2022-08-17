@@ -1,0 +1,72 @@
+.heading {
+    padding: 50px;
+    font-weight: 700;
+    font-size: 48px;
+    margin-left: 30px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.tablecontainer {
+    width: 400px;
+}
+
+.carttitle {
+    padding-bottom: 30px;
+}
+
+.tablehead {
+    background-color: #F86338;
+}
+
+.tablerow.MuiTableCell-alignRight {
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.cartcontainer {
+    padding-top: 80px;
+}
+
+.coupon.MuiTypography-body1 {
+    font-weight: 700;
+    font-size: 24px;
+    padding-bottom: 20px;
+}
+
+.cartinput.MuiFormControl-root {
+    width: 380px;
+    border: #F86338 !important;
+}
+
+.cartTotals.MuiTypography-body1 {
+    font-weight: 700;
+    font-size: 24px;
+    padding-bottom: 30px;
+}
+
+.subtotal.MuiTypography-body1 {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.cartsubtotal {
+    color: #515151;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.changetext.MuiTypography-body1 {
+    color: #F86338;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.boxsize {
+    width: 504px;
+    height: 353px;
+    background-color: #FFEFEB;
+    padding-top: 80px;
+    padding-left: 50px;
+}
