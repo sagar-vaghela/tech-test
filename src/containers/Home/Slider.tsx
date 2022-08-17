@@ -1,6 +1,6 @@
 import React from 'react';
 import { FavoriteBorderOutlined } from '@material-ui/icons';
-import SlideImage from '../image/image.svg';
+import SlideImage from '../../components/image/image.svg';
 import Carousel from 'better-react-carousel';
 import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 
