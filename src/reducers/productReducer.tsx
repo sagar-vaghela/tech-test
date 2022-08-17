@@ -5,12 +5,12 @@ import {
   GET_PRODUCT_DETAILS_FAILED,
   GET_PRODUCT_DETAILS_STARTED,
   GET_PRODUCT_DETAILS_SUCCEEDED,
-  GET_CATEGORIES_STARTED,
-  GET_CATEGORIES_SUCCEEDED,
-  GET_CATEGORIES_FAILED,
+  SELECT_CATEGORY_STARTED,
+  SELECT_CATEGORY_SUCCEEDED,
+  SELECT_CATEGORY_FAILED,
   GET_SPECIFIC_PRODUCTS_STARTED,
   GET_SPECIFIC_PRODUCTS_SUCCEEDED,
-  GET_SPECIFIC_PRODUCTS_FAILED,
+  GET_SPECIFIC_PRODUCTS_FAILED
 } from '../lib/constants/actionTypes';
 import initialState from './initialState';
 
@@ -57,43 +57,43 @@ const productReducer = (
         error: action.payload
       };
 
-      case GET_CATEGORIES_STARTED:
-        return {
-          ...state,
-          isLoading: true,
-          error: null
-        };
-      case GET_CATEGORIES_SUCCEEDED:
-        return {
-          ...state,
-          product: action.payload,
-          isLoading: false
-        };
-      case GET_CATEGORIES_FAILED:
-        return {
-          ...state,
-          isLoading: false,
-          error: action.payload
-        };
+    case SELECT_CATEGORY_STARTED:
+      return {
+        ...state,
+        isLoading: true,
+        error: null
+      };
+    case SELECT_CATEGORY_SUCCEEDED:
+      return {
+        ...state,
+        product: action.payload,
+        isLoading: false
+      };
+    case SELECT_CATEGORY_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
 
-        case GET_SPECIFIC_PRODUCTS_STARTED:
-          return {
-            ...state,
-            isLoading: true,
-            error: null
-          };
-        case GET_SPECIFIC_PRODUCTS_SUCCEEDED:
-          return {
-            ...state,
-            products: action.payload,
-            isLoading: false
-          };
-        case GET_SPECIFIC_PRODUCTS_FAILED:
-          return {
-            ...state,
-            isLoading: false,
-            error: action.payload
-          };
+    case GET_SPECIFIC_PRODUCTS_STARTED:
+      return {
+        ...state,
+        isLoading: true,
+        error: null
+      };
+    case GET_SPECIFIC_PRODUCTS_SUCCEEDED:
+      return {
+        ...state,
+        products: action.payload,
+        isLoading: false
+      };
+    case GET_SPECIFIC_PRODUCTS_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
 
     default:
       return state;

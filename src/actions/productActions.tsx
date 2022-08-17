@@ -12,10 +12,9 @@ import {
   GET_SPECIFIC_PRODUCTS_STARTED,
   GET_SPECIFIC_PRODUCTS_SUCCEEDED,
   GET_SPECIFIC_PRODUCTS_FAILED,
-  GET_CATEGORIES_STARTED,
-  GET_CATEGORIES_SUCCEEDED,
-  GET_CATEGORIES_FAILED,
-
+  SELECT_CATEGORY_STARTED,
+  SELECT_CATEGORY_SUCCEEDED,
+  SELECT_CATEGORY_FAILED
 } from '../lib/constants/actionTypes';
 import * as ProductService from '../services/api';
 
@@ -51,18 +50,18 @@ const getSpecificProductsFailed = (error: string) => ({
   error: true
 });
 
-//Get All Categories
-const getAllCategoriesStarted = () => ({
-  type: GET_CATEGORIES_STARTED
+//Get Categories
+const getCategoriesStarted = () => ({
+  type: SELECT_CATEGORY_STARTED
 });
 
-const getAllCategoriesSucceeded = (data: any) => ({
-  type: GET_CATEGORIES_SUCCEEDED,
+const getCategoriesSucceeded = (data: any) => ({
+  type: SELECT_CATEGORY_SUCCEEDED,
   payload: data
 });
 
-const getAllCategoriesFailed = (error: string) => ({
-  type: GET_CATEGORIES_FAILED,
+const getCategoriesFailed = (error: string) => ({
+  type: SELECT_CATEGORY_FAILED,
   payload: error,
   error: true
 });
@@ -94,36 +93,39 @@ export const getProducts = (): any => async (dispatch: any) => {
     });
 };
 
+export const getSpecificProducts =
+  (product: string): any =>
+  async (dispatch: any) => {
+    dispatch(getSpecificProductsStarted());
+    await ProductService.getSpecificProducts(product)
+      .then((res) => {
+        dispatch(getSpecificProductsSucceeded(res));
+      })
+      .catch((error) => {
+        dispatch(getSpecificProductsFailed('error.response'));
+      });
+  };
 
-export const getSpecificProducts = (product: string): any => async (dispatch: any) => {
-  dispatch(getSpecificProductsStarted());
-  await ProductService.getSpecificProducts(product)
+export const getCategories = (): any => async (dispatch: any) => {
+  dispatch(getCategoriesStarted());
+  await ProductService.getCategories()
     .then((res) => {
-      dispatch(getSpecificProductsSucceeded(res));
+      dispatch(getCategoriesSucceeded(res));
     })
     .catch((error) => {
-      dispatch(getSpecificProductsFailed('error.response'));
+      dispatch(getCategoriesFailed('error.response'));
     });
 };
 
-export const getAllCategories = (): any => async (dispatch: any) => {
-  dispatch(getAllCategoriesStarted());
-  await ProductService.getAllCategories()
-    .then((res) => {
-      dispatch(getAllCategoriesSucceeded(res));
-    })
-    .catch((error) => {
-      dispatch(getAllCategoriesFailed('error.response'));
-    });
-};
-
-export const getSingleProduct = (id: number): any => async (dispatch: any) => {
-  dispatch(getSingleStarted());
-  await ProductService.getSingleProduct(id)
-    .then((res) => {
-      dispatch(getSingleSucceeded(res));
-    })
-    .catch((error) => {
-      dispatch(getSingleFailed('error.response'));
-    });
-};
+export const getSingleProduct =
+  (id: number): any =>
+  async (dispatch: any) => {
+    dispatch(getSingleStarted());
+    await ProductService.getSingleProduct(id)
+      .then((res) => {
+        dispatch(getSingleSucceeded(res));
+      })
+      .catch((error) => {
+        dispatch(getSingleFailed('error.response'));
+      });
+  };

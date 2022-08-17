@@ -7,20 +7,18 @@ const handleCatchError = (error: string) => {
 
 const API_URL = 'https://fakestoreapi.com';
 
-
 export const getProducts = async () => {
   return get(`${API_URL}/products`).catch(handleCatchError);
 };
 
-export const getSpecificProducts = async (product:string) => {
+export const getSpecificProducts = async (product: string) => {
   return get(`${API_URL}/products/category/${product}`).catch(handleCatchError);
 };
 
-export const getAllCategories = async () => {
+export const getCategories = async () => {
   return get(`${API_URL}/products/categories`).catch(handleCatchError);
 };
 
-export const getSingleProduct = async (id:number) => {
+export const getSingleProduct = async (id: number) => {
   return get(`${API_URL}/products/${id}`).catch(handleCatchError);
 };
-
