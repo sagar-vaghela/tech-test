@@ -17,7 +17,7 @@ const App = () => {
       <div>Geolocation is not enabled</div>
     ) : coords != null ? (
       <div>
-        You are at {coords.latitude}, {coords.longitude}.
+        You are at {coords.latitude}, {coords.longitude} (lat long).
       </div>
     ) : (
       <div>Getting the location data&hellip; </div>

@@ -1,5 +1,5 @@
 import { FavoriteBorderOutlined } from '@material-ui/icons';
-import SlideImage from '../image/image.svg';
+import SlideImage from '../../components/image/image.svg';
 
 const Product = () => {
   return (
