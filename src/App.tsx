@@ -16,38 +16,14 @@ const App = () => {
     ) : !isGeolocationEnabled ? (
       <div>Geolocation is not enabled</div>
     ) : coords != null ? (
-      <table>
-        <tbody>
-          <tr>
-            <td>latitude</td>
-            <td>{coords.latitude}</td>
-          </tr>
-          <tr>
-            <td>longitude</td>
-            <td>{coords.longitude}</td>
-          </tr>
-          <tr>
-            <td>altitude</td>
-            <td>{coords.altitude}</td>
-          </tr>
-          <tr>
-            <td>heading</td>
-            <td>{coords.heading}</td>
-          </tr>
-          <tr>
-            <td>speed</td>
-            <td>{coords.speed}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div>You are at {coords.latitude}, {coords.longitude}.</div>
     ) : (
       <div>Getting the location data&hellip; </div>
     );
 
   return (
     <>
-      <Header />
-      {renderGeoLocation()}
+      <Header renderlocation = {renderGeoLocation}/>
       <ShoppingRoutes />
       <Footer />
     </>
