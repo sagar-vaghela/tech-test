@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import imgContainer from '../../icons/imgContainer.svg';
 import Typography from '@material-ui/core/Typography';
 import {
   Grid,
@@ -16,36 +16,28 @@ import { Add, Remove } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import TrueIcon from '../../components/Icons/trueicon.svg';
+import React from 'react';
+import TrueIcon from '../Icons/trueicon.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleProduct } from '../../actions';
 
 const option = ['XS', 'S', 'ML', 'L', 'XL'];
 
-const ProductDetail = () => {
-  const { id }: any = useParams();
-
-  const product = useSelector((state: any) => state.productData.product);
-
-  const dispatch = useDispatch();
+const ProdDetail = (props: any) => {
   const [countValue, setCountvalue] = useState(0);
   const [optionvalue, setOptionValue] = useState(option[0]);
-
-  useEffect(() => {
-    dispatch(getSingleProduct(id));
-  }, [id]);
 
   return (
     <>
       <Grid className="wrapper">
         <Grid className={'imagecontainer'}>
           <Grid className={'image'}>
-            <img src={product.image} alt="" />
+            <img src={props.image} alt="" />
           </Grid>
         </Grid>
         <Grid className={'infocontainer'}>
           <Typography variant="h4" className="titledetails">
-            {product.title}
+            {props.productDetail.title}
           </Typography>
           <Grid container spacing={3}>
             <Grid item md={3}>
@@ -57,7 +49,7 @@ const ProductDetail = () => {
           </Grid>
           <Grid container spacing={3} style={{ marginBottom: '15px' }}>
             <Grid item md={4}>
-              <Typography className="dollar"> {product.price} </Typography>
+              <Typography className="dollar"> {props.productDetail.price} </Typography>
             </Grid>
             <Grid item sm={8}>
               <Typography className="canceldollar"> $1500 </Typography>
@@ -73,7 +65,7 @@ const ProductDetail = () => {
           </Grid>
           <Grid container spacing={3} style={{ marginBottom: '15px' }}>
             <Grid item md={2}>
-              <Typography className="sku"> {product.category} </Typography>
+              <Typography className="sku">  {props.productDetail.category} </Typography>
             </Grid>
             <Grid item sm={8}>
               <Typography className="skuresponse">: Dresses</Typography>
@@ -97,7 +89,8 @@ const ProductDetail = () => {
                 value={optionvalue}
                 onChange={(event) => {
                   setOptionValue(event.target.value);
-                }}>
+                }}
+              >
                 {option.map((option) => (
                   <MenuItem key={option} value={option}>
                     {option}
@@ -111,7 +104,8 @@ const ProductDetail = () => {
                 size="small"
                 onClick={() => {
                   setCountvalue(countValue - 1);
-                }}>
+                }}
+              >
                 <Remove />
               </IconButton>
               <TextField
@@ -129,7 +123,8 @@ const ProductDetail = () => {
                 size="small"
                 onClick={() => {
                   setCountvalue(countValue + 1);
-                }}>
+                }}
+              >
                 <Add />
               </IconButton>
             </Grid>
@@ -145,7 +140,8 @@ const ProductDetail = () => {
               <Button
                 variant="contained"
                 className="button"
-                style={{ backgroundColor: '#F86338', color: 'white' }}>
+                style={{ backgroundColor: '#F86338', color: 'white' }}
+              >
                 Add to Cart
                 <ShoppingCartIcon style={{ marginLeft: '23px' }} />
               </Button>
@@ -223,4 +219,5 @@ const ProductDetail = () => {
     </>
   );
 };
-export default ProductDetail;
+
+export default ProdDetail;
