@@ -1,46 +1,84 @@
-# Getting Started with Create React App
+# React | TypeScript | API Integration | Material-Ui
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React Application with TypeScript based E-commerce app and configured with:
 
-## Available Scripts
+1. **Linters:** ESLint and Prettier.
+2. **TypeScript and React specific folders:** `components`, `containers`, `store`, `icons`, `interfaces`, `lib`, `reducers`, `routes`, `services`, and `actions` (Folder Structure).
+3. **Styled-Components:** configured Material-UI types.
+4. **Redux:** for state management.
 
-In the project directory, you can run:
+## Project structure
 
-### `npm start`
+The app has the following structure:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`components`, `containers`, `store`, `icons`, `interfaces`, `lib`, `reducers`, `routes`, `services`, and `actions`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- `components`: React components used accross the app.
+- `containers`: Holding the business logic and perform actions and be limited to the page-specific logic.
+- `store`: Redux store which Contains single object with holind entire data of application.
+- `icons`: Static SVG Icons
+- `interfaces`: Define interfaces for each modules and each page.
+- `lib`: Contains the unilities function and constant values
+- `reducers`: Contains what should next once Action will perform.
+- `routes`: used for redirection from one page to another.
+- `services`: define services and api calls.
+- `actions`: Define functions for what to do.
 
-### `npm test`
+### Tasks : What I done.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Create React Application with TypeScript based E-commerce app.
+2. Used Material UI for Design - https://v4.mui.com/
+3. Used this Template for design - https://www.figma.com/file/f2lq64bTjXzIWLojR096bs/Fashion-Website-TemplateKit?node-id=1%3A3
+4. App perform like below step,
+    - Home Screen
+        - Click on Shop button
+        - User can see the Current location on Header.
+    - Products Screen
+        - Click on any product and redirect to Product Detail Page
+        - Filters functionality
+        - Sorting functionality.
+        - Search functionality.
+        - Pagination.
+        
+    - Product Details Page
+        - Click on Add to Cart button
+    - Cart Screen
+        - List of Card and you can remove from Cart As well.
+5. App is resonsive as much as i can.
+6. Divide component as much as i can. It could be more but due to time constraint i did not done more.
+7. Used CRUD APIs from these docs - https://fakestoreapi.com/docs for retrieving the product details.
+8. Setup ESLint for Code standardrization.
+9. Setup Prettier for code format.
+10. WriteTechnical documentation on README.md file for how approach and solution.
+11. Implementation of geo-location which gets the current user’s location.
+### Notes
 
-### `npm run build`
+1. Used fetch for API call. [Axios](https://github.com/axios/axios) as the request library as well
+2. Crete seperate File for API call where you can see it requires only one time implemetation and it will used allover the app as when require.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### I Make sure below things for this app.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. _Structure of the code:_ both in terms of the actual code and the organization of files / folders.
+2. _React patterns:_ efficient and well-structure your React code is.
+3. _TypeScript:_  clear, helpful and explicit is your use of TypeScript.
+4. _Documentation:_  clear and well commented your code is.
+5. _Git processes:_ clear and well-structured your commits and commit messages are.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Prerequisites
 
-### `npm run eject`
+To set up the codebase and the required dependencies, simply run the following command.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+# Set up tools:
+$ npm i
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Running the app
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+# development
+$ npm run start
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# production
+$ npm run build && npm run start
+```
