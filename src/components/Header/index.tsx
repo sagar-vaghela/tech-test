@@ -1,12 +1,12 @@
-import { Avatar, Grid, Link, Typography } from "@material-ui/core";
-import CallIcon from "@material-ui/icons/Call";
-import HeaderIcon from "../Icons/Headerlogo.svg";
-import "../../css/header.css";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import PermIdentityIcon from "@material-ui/icons/PermIdentity";
+import { Avatar, Grid, Link, Typography } from '@material-ui/core';
+import CallIcon from '@material-ui/icons/Call';
+import HeaderIcon from '../Icons/Headerlogo.svg';
+import '../../css/header.css';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
-const avtarname = ["Fb", "Tw", "Ig", "Yt"];
+const avtarname = ['Fb', 'Tw', 'Ig', 'Yt'];
 
 const Header = () => {
   return (
@@ -14,7 +14,7 @@ const Header = () => {
       <Grid container spacing={3}>
         <Grid item xs>
           <Typography className="mobilephone">
-            <CallIcon style={{ paddingTop: "10px" }} />
+            <CallIcon style={{ paddingTop: '10px' }} />
             +022 319 821 967
           </Typography>
         </Grid>
@@ -25,8 +25,8 @@ const Header = () => {
         </Grid>
         <Grid item xs>
           <div className="avtar">
-            {avtarname.map((name) => (
-              <Avatar className="avtarlogo">{name}</Avatar>
+            {avtarname.map((name, i) => (
+              <Avatar key={i} className="avtarlogo">{name}</Avatar>
             ))}
           </div>
         </Grid>
@@ -50,14 +50,8 @@ const Header = () => {
         </Grid>
         <Grid item sm={3}>
           <div className="iconsection">
-            <FavoriteBorderIcon
-              style={{ marginRight: "33px" }}
-              fontSize="medium"
-            />
-            <ShoppingCartIcon
-              style={{ marginRight: "33px" }}
-              fontSize="medium"
-            />
+            <FavoriteBorderIcon style={{ marginRight: '33px' }} fontSize="medium" />
+            <ShoppingCartIcon style={{ marginRight: '33px' }} fontSize="medium" />
             <PermIdentityIcon fontSize="medium" />
           </div>
         </Grid>

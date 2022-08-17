@@ -1,17 +1,17 @@
 import { ThunkAction } from 'redux-thunk';
 import { Action } from '@reduxjs/toolkit';
 
-export type initialStateType = {
+export interface initialStateType {
   productData: productDataType;
-};
+}
 
-export type categoryType = {
+export interface categoryType {
   createdAt: string;
   name: string;
   id: string;
-};
+}
 
-export type productType = {
+export interface productType {
   createdAt: string;
   name: string;
   avatar: string;
@@ -19,13 +19,13 @@ export type productType = {
   price: string;
   category: string;
   description: string;
-};
+}
 
-export type productDataType = {
-  products: Array<productType>;
+export interface productDataType {
+  products: productType[];
   product: any | undefined | null | productType;
   isLoading: boolean;
   error: any | undefined | null;
-};
+}
 
 export type AppThunk = ThunkAction<void, initialStateType, null, Action<string>>;

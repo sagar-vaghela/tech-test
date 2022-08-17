@@ -6,7 +6,6 @@ const Hero = () => {
     <div className="container">
       <div className="left">
         <div className="left-wrapper">
-          
           <Typography variant="h2">
             Sort out Your <br /> Spring Look
           </Typography>
@@ -14,8 +13,8 @@ const Hero = () => {
             We will help to develop every smallest thing into a <br />
             big one for your company.
           </Typography>
-          <div style={{marginTop: '25px'}}>
-          {/* <Link to={`/categories`}> 
+          <div style={{ marginTop: '25px' }}>
+            {/* <Link to={`/categories`}> 
            <Button> Shop </Button>
           </Link> */}
           </div>

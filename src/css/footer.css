@@ -1,95 +1,95 @@
 .footercontainer {
-    margin-top: 9rem;
-    display: flex;
-    background-color: #F86338;
+  margin-top: 9rem;
+  display: flex;
+  background-color: #f86338;
 }
 
 .left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .LogoContainer {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 .Logo {
-    flex: 1;
-    cursor: pointer;
+  flex: 1;
+  cursor: pointer;
 }
 
 .desc {
-    margin: 20px 0px;
-    font-size: 16px;
-    font-family: "DM Sans", sans-serif;
-    font-weight: 400;
-    color: white;
+  margin: 20px 0px;
+  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  color: white;
 }
 
 .desccontainer {
-    margin-bottom: 9rem;
+  margin-bottom: 9rem;
 }
 
 .copyright {
-    display: flex;
-    font-size: 16px;
-    font-family: "DM Sans", sans-serif;
-    font-weight: 400;
-    color: white;
+  display: flex;
+  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  color: white;
 }
 
 .copyrightContainer {
-    margin-right: 9rem;
-    padding-bottom: 15px;
+  margin-right: 9rem;
+  padding-bottom: 15px;
 }
 
 .footercenter {
-    flex: 1;
-    padding: 20px;
-    margin-top: 9rem;
-    margin-left: 9rem;
+  flex: 1;
+  padding: 20px;
+  margin-top: 9rem;
+  margin-left: 9rem;
 }
 
 .footerheading {
-    margin-bottom: 30px;
-    font-size: 16px;
-    font-family: "DM Sans", sans-serif;
-    font-weight: 700;
-    color: white;
+  margin-bottom: 30px;
+  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  color: white;
 }
 
 .media {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .medialist {
-    width: 50%;
-    margin-bottom: 20px;
-    margin: 10px;
-    font-size: 16px;
-    font-family: "DM Sans", sans-serif;
-    font-weight: 400;
-    cursor: pointer;
-    color: white;
+  width: 50%;
+  margin-bottom: 20px;
+  margin: 10px;
+  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  color: white;
 }
 
 .footerright {
-    flex: 1;
-    padding: 20px;
-    margin-top: 9rem;
+  flex: 1;
+  padding: 20px;
+  margin-top: 9rem;
 }
 
 .contactItem {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    font-family: "DM Sans", sans-serif;
-    font-weight: 700;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
 }

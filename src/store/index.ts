@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'development') {
   enhancer = applyMiddleware(thunk, logger);
 }
 
-//https://stackoverflow.com/questions/51503198/error-error-error-error-you-may-not-call-store-getstate-while-the-reducer
+// https://stackoverflow.com/questions/51503198/error-error-error-error-you-may-not-call-store-getstate-while-the-reducer
 
 export const configureStore = () => {
   return createStore(rootReducer, enhancer);
