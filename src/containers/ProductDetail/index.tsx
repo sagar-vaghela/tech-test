@@ -1,7 +1,9 @@
+import ProdDetail from "../../components/Details/ProdDetails";
+
 const ProductDetail = () => {
   return (
     <div>
-        Product Detail
+      <ProdDetail/>
     </div>
   );
 };

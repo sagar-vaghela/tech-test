@@ -1,0 +1,132 @@
+.containerClass {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.alignRight {
+  text-align: right;
+}
+.rangeSliderClass {
+  margin-top: 20px;
+}
+.titleClass {
+  font-size: 20px;
+  font-weight: bold;
+}
+.colorSection {
+  margin-top: 30px;
+}
+.colorPlaceholder {
+  margin-top: 20px;
+}
+.categarySection {
+  margin-top: 30px;
+}
+.categarySectionContent {
+  margin-top: 20px;
+}
+.categaryD {
+  margin-top: 15px;
+  font-weight: bold;
+}
+.loadMore {
+  text-align: center;
+  color: #f3692e;
+  margin-top: 20px;
+}
+.searchInput > div:nth-child(1) {
+  width: 100%;
+}
+.pagignationSection ul {
+  justify-content: center;
+}
+.ImgListContentDetails {
+  text-align: center;
+}
+.title {
+  color: #f3692e;
+  margin-top: 10px !important;
+  font-size: 14px !important;
+}
+.subTitle {
+  font-weight: bold;
+  margin-top: 10px !important;
+  font-size: 24px !important;
+}
+.productType {
+  margin-top: 10px !important;
+  font-size: 12px !important;
+}
+.prize {
+  color: #f3692e;
+  margin-top: 10px !important;
+  font-size: 24px !important;
+}
+.ImgContainer > img {
+  width: 100%;
+}
+.imagListSection {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.ContainerImg {
+  position: relative;
+}
+.ContainerImg > img {
+  width: 100%;
+}
+.HeartImgSection {
+  width: 22px;
+  padding: 10px;
+  padding-bottom: 6px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: 15px;
+  right: 30px;
+}
+.searchInput {
+  position: relative;
+}
+.searchInputIcon {
+  position: absolute;
+  top: 18px;
+  right: 30px;
+}
+.pagignationShowDetails {
+  margin-top: 40px;
+}
+.showItem {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+  color: #9a9ab0;
+  position: relative;
+  top: 7px;
+}
+.sortTxt {
+  display: inline-block;
+  margin-right: 20px;
+}
+.IconBtn {
+  display: inline-block;
+  /* margin-right: 20px; */
+  position: relative;
+  top: 7px;
+}
+.sortTxtFilter {
+  /* display: inline-block;
+    margin-right: 20px; */
+  display: inline-block;
+  margin-right: 20px;
+  position: relative;
+  top: -7px;
+}
+/* .sortTxtFilter .MuiNativeSelect-select.MuiNativeSelect-select{
+    border-radius: 4px !important;
+    position: relative !important;
+    border: 1px solid #ced4da !important;
+    font-size: 16px !important;
+    padding: 10px 26px 10px 12px !important;
+} */

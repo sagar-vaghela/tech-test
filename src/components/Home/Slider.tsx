@@ -1,8 +1,4 @@
-
-import React, { Children, useEffect, useState } from 'react';
-import { useSwipeable } from 'react-swipeable';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import React from 'react';
 import { FavoriteBorderOutlined } from '@material-ui/icons';
 import SlideImage from '../image/image.svg';
 import Carousel from 'better-react-carousel';
@@ -43,7 +39,7 @@ const Slider = () => {
     <Carousel cols={4} rows={1} gap={0} loop >
       {test.map((test, index) => {
         return (
-          <Carousel.Item>
+          <Carousel.Item key={index}>
             <Card className='card'>
               <CardMedia
                 className='media'
@@ -54,16 +50,16 @@ const Slider = () => {
                 </div>
               </CardMedia>
               <CardContent className='cardContent'>
-                <Typography variant="subtitle2">
+                <Typography variant="subtitle2" style={{color:'#F3692E'}}>
                   Bags
                 </Typography>
                 <Typography variant="h5">
                   Queen’s Summer
                 </Typography>
-                <Typography variant="subtitle2">
+                <Typography variant="subtitle2"  style={{color:'#515151'}}>
                   Medium Shoulder Bag
                 </Typography>
-                <Typography variant="subtitle1">
+                <Typography variant="subtitle1" style={{color:'#F3692E'}}>
                   $1000
                 </Typography>
               </CardContent>

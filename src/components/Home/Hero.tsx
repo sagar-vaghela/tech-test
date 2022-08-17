@@ -16,10 +16,15 @@ const Hero = () => {
           </Typography>
           <div style={{marginTop: '25px'}}>
            <Button href="/categories" variant="contained" style={{background: '#F86338', color: 'white', textTransform: 'none'}}>{'Shop > '}</Button>
+
+          <div style={{ marginTop: '25px' }}>
+            {/* <Link to={`/categories`}> 
+           <Button> Shop </Button>
+          </Link> */}
           </div>
         </div>
       </div>
-
+     </div>  
       <div className="right">
         <div className="right-container">
           <img alt='' src={SlideImage} />
