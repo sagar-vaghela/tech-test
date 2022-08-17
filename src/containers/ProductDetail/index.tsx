@@ -36,11 +36,6 @@ const ProductDetail = () => {
   }, [id]);
 
   return (
-<<<<<<< HEAD
-    <div>
-      <ProdDetail productDetail={getSignleProduct} id={id} />
-    </div>
-=======
     <>
       <Grid className="wrapper">
         <Grid className={'imagecontainer'}>
@@ -226,7 +221,6 @@ const ProductDetail = () => {
         </Grid>
       </Grid>
     </>
->>>>>>> 64359c5bbffaa16d27b14f4606a7715d9ec05b6a
   );
 };
 export default ProductDetail;
