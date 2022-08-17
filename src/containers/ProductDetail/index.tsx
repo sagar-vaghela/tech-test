@@ -1,4 +1,10 @@
+import ProdDetail from "../../components/Details/ProdDetails";
+
 const ProductDetail = () => {
-  return <div>Product Detail</div>;
+  return (
+    <div>
+      <ProdDetail/>
+    </div>
+  );
 };
 export default ProductDetail;
