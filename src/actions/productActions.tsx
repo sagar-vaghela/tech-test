@@ -12,9 +12,9 @@ import {
   GET_SPECIFIC_PRODUCTS_STARTED,
   GET_SPECIFIC_PRODUCTS_SUCCEEDED,
   GET_SPECIFIC_PRODUCTS_FAILED,
-  GET_ALL_CATEGORIES_STARTED,
-  GET_ALL_CATEGORIES_SUCCEEDED,
-  GET_ALL_CATEGORIES_FAILED,
+  GET_CATEGORIES_STARTED,
+  GET_CATEGORIES_SUCCEEDED,
+  GET_CATEGORIES_FAILED,
 
 } from '../lib/constants/actionTypes';
 import * as ProductService from '../services/api';
@@ -53,16 +53,16 @@ const getSpecificProductsFailed = (error: string) => ({
 
 //Get All Categories
 const getAllCategoriesStarted = () => ({
-  type: GET_ALL_CATEGORIES_STARTED
+  type: GET_CATEGORIES_STARTED
 });
 
 const getAllCategoriesSucceeded = (data: any) => ({
-  type: GET_ALL_CATEGORIES_SUCCEEDED,
+  type: GET_CATEGORIES_SUCCEEDED,
   payload: data
 });
 
 const getAllCategoriesFailed = (error: string) => ({
-  type: GET_ALL_CATEGORIES_FAILED,
+  type: GET_CATEGORIES_FAILED,
   payload: error,
   error: true
 });
