@@ -1,6 +1,7 @@
 import Typography from '@material-ui/core/Typography';
 import { Button } from "@material-ui/core";
 import SlideImage from '../image/image.svg';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -15,12 +16,11 @@ const Hero = () => {
             big one for your company.
           </Typography>
           <div style={{marginTop: '25px'}}>
-           <Button href="/categories" variant="contained" style={{background: '#F86338', color: 'white', textTransform: 'none'}}>{'Shop > '}</Button>
 
           <div style={{ marginTop: '25px' }}>
-            {/* <Link to={`/categories`}> 
-           <Button> Shop </Button>
-          </Link> */}
+            <Link to={`/products`} style={{textDecoration: 'none'}}> 
+              <Button variant="contained" style={{background: '#F86338', color: 'white', textTransform: 'none'}}>{'Shop > '}</Button>
+            </Link>
           </div>
         </div>
       </div>
