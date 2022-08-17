@@ -25,7 +25,22 @@ export interface productDataType {
   products: productType[];
   product: any | undefined | null | productType;
   isLoading: boolean;
-  error: any | undefined | null;
+  error: IError | undefined | null;
+}
+
+export interface IError {
+  name?: string;
+  code?: number;
+  type?: string;
+  status?: number;
+  ok?: boolean;
+  message?: string;
+}
+
+export interface headerParams {
+  headers?: {
+    Accept?: string;
+  }
 }
 
 export type AppThunk = ThunkAction<void, initialStateType, null, Action<string>>;
