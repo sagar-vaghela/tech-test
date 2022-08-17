@@ -19,3 +19,8 @@ export const getSpecificProducts = async (product:string) => {
 export const getAllCategories = async () => {
   return get(`${API_URL}/products/categories`).catch(handleCatchError);
 };
+
+export const getSingleProduct = async (id:number) => {
+  return get(`${API_URL}/products/${id}`).catch(handleCatchError);
+};
+

@@ -67,6 +67,22 @@ const getAllCategoriesFailed = (error: string) => ({
   error: true
 });
 
+//Get Single Product
+const getSingleStarted = () => ({
+  type: GET_PRODUCT_DETAILS_STARTED
+});
+
+const getSingleSucceeded = (data: any) => ({
+  type: GET_PRODUCT_DETAILS_SUCCEEDED,
+  payload: data
+});
+
+const getSingleFailed = (error: string) => ({
+  type: GET_PRODUCT_DETAILS_FAILED,
+  payload: error,
+  error: true
+});
+
 export const getProducts = (): any => async (dispatch: any) => {
   dispatch(getProductsStarted());
   await ProductService.getProducts()
@@ -101,3 +117,13 @@ export const getAllCategories = (): any => async (dispatch: any) => {
     });
 };
 
+export const getSingleProduct = (id: number): any => async (dispatch: any) => {
+  dispatch(getSingleStarted());
+  await ProductService.getSingleProduct(id)
+    .then((res) => {
+      dispatch(getSingleSucceeded(res));
+    })
+    .catch((error) => {
+      dispatch(getSingleFailed('error.response'));
+    });
+};
