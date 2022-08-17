@@ -22,3 +22,9 @@ export const getCategories = async () => {
 export const getSingleProduct = async (id: number) => {
   return get(`${API_URL}/products/${id}`).catch(handleCatchError);
 };
+
+export const addCart = async (payload: object) => {
+  return post(`${API_URL}/carts`, {
+    body: JSON.stringify(payload),
+  });
+};

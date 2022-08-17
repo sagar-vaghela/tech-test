@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSingleProduct } from '../../actions';
 
 const ProductDetail = () => {
-  const { id }:any = useParams();
+  const { id } : any = useParams();
   const getSignleProduct = useSelector((state: any) => state.productData.product);
   const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ const ProductDetail = () => {
 
   return (
     <div>
-      <ProdDetail productDetail={getSignleProduct}/>
+      <ProdDetail productDetail={getSignleProduct} id={id} />
     </div>
   );
 };

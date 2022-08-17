@@ -14,7 +14,12 @@ import {
   GET_SPECIFIC_PRODUCTS_FAILED,
   SELECT_CATEGORY_STARTED,
   SELECT_CATEGORY_SUCCEEDED,
-  SELECT_CATEGORY_FAILED
+  SELECT_CATEGORY_FAILED,
+  ADD_CART_STARTED,
+  ADD_CART_SUCCEEDED,
+  ADD_CART_FAILED,
+
+  
 } from '../lib/constants/actionTypes';
 import * as ProductService from '../services/api';
 
@@ -82,6 +87,22 @@ const getSingleFailed = (error: string) => ({
   error: true
 });
 
+//Add to Cart 
+const addCartStarted = () => ({
+  type: ADD_CART_STARTED
+});
+
+const addCartSucceeded = (data: any) => ({
+  type: ADD_CART_SUCCEEDED,
+  payload: data
+});
+
+const addCartFailed = (error: string) => ({
+  type: ADD_CART_FAILED,
+  payload: error,
+  error: true
+});
+
 export const getProducts = (): any => async (dispatch: any) => {
   dispatch(getProductsStarted());
   await ProductService.getProducts()
@@ -127,5 +148,17 @@ export const getSingleProduct =
       })
       .catch((error) => {
         dispatch(getSingleFailed('error.response'));
+      });
+  };
+
+export const addCart = (payload: object): any => async (dispatch: any) => {
+    dispatch(addCartStarted());
+    await ProductService.addCart(payload)
+      .then((res) => {
+        localStorage.setItem('cartId', res.id)
+        dispatch(addCartSucceeded(res));
+      })
+      .catch((error) => {
+        dispatch(addCartFailed('error.response'));
       });
   };

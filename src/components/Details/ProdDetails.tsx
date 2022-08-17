@@ -19,13 +19,29 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import React from 'react';
 import TrueIcon from '../Icons/trueicon.svg';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSingleProduct } from '../../actions';
+import { addCart } from '../../actions';
 
 const option = ['XS', 'S', 'ML', 'L', 'XL'];
 
 const ProdDetail = (props: any) => {
   const [countValue, setCountvalue] = useState(0);
   const [optionvalue, setOptionValue] = useState(option[0]);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    const payload = {
+      userId: 9,
+      date: new Date(),
+      products:[{productId: props.id, quantity: countValue}]
+    }
+    const localStorageValue: any = localStorage.getItem('cartId');
+    if(localStorageValue) {
+      // dispatch(addCart(payload)); // update
+    }
+    else {
+      dispatch(addCart(payload));
+    }
+  }
 
   return (
     <>
@@ -141,6 +157,7 @@ const ProdDetail = (props: any) => {
                 variant="contained"
                 className="button"
                 style={{ backgroundColor: '#F86338', color: 'white' }}
+                onClick={handleAddToCart}
               >
                 Add to Cart
                 <ShoppingCartIcon style={{ marginLeft: '23px' }} />
