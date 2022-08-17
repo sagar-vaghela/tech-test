@@ -5,9 +5,9 @@ import {
   GET_PRODUCT_DETAILS_FAILED,
   GET_PRODUCT_DETAILS_STARTED,
   GET_PRODUCT_DETAILS_SUCCEEDED,
-  GET_ALL_CATEGORIES_STARTED,
-  GET_ALL_CATEGORIES_SUCCEEDED,
-  GET_ALL_CATEGORIES_FAILED,
+  GET_CATEGORIES_STARTED,
+  GET_CATEGORIES_SUCCEEDED,
+  GET_CATEGORIES_FAILED,
   GET_SPECIFIC_PRODUCTS_STARTED,
   GET_SPECIFIC_PRODUCTS_SUCCEEDED,
   GET_SPECIFIC_PRODUCTS_FAILED,
@@ -57,19 +57,19 @@ const productReducer = (
         error: action.payload
       };
 
-      case GET_ALL_CATEGORIES_STARTED:
+      case GET_CATEGORIES_STARTED:
         return {
           ...state,
           isLoading: true,
           error: null
         };
-      case GET_ALL_CATEGORIES_SUCCEEDED:
+      case GET_CATEGORIES_SUCCEEDED:
         return {
           ...state,
           product: action.payload,
           isLoading: false
         };
-      case GET_ALL_CATEGORIES_FAILED:
+      case GET_CATEGORIES_FAILED:
         return {
           ...state,
           isLoading: false,

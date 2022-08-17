@@ -48,20 +48,20 @@ The app has the following structure:
 6. Divide component as much as i can. It could be more but due to time constraint i did not done more.
 7. Used CRUD APIs from these docs - https://fakestoreapi.com/docs for retrieving the product details.
 8. Setup ESLint for Code standardrization.
-9. Setup Prettier for code format.
+9. Setup Prettier for Code format.
 10. WriteTechnical documentation on README.md file for how approach and solution.
 11. Implementation of geo-location which gets the current user’s location.
 ### Notes
 
-1. Used fetch for API call. [Axios](https://github.com/axios/axios) as the request library as well
+1. Used fetch for API call. we can also use [Axios](https://github.com/axios/axios).
 2. Crete seperate File for API call where you can see it requires only one time implemetation and it will used allover the app as when require.
 
 ### I Make sure below things for this app.
 
-1. _Structure of the code:_ both in terms of the actual code and the organization of files / folders.
-2. _React patterns:_ efficient and well-structure your React code is.
-3. _TypeScript:_  clear, helpful and explicit is your use of TypeScript.
-4. _Documentation:_  clear and well commented your code is.
+1. _Structure of the code:_ both in terms of the actual code and the organization of files/folders.
+2. _React patterns:_ efficient and well-structure React code.
+3. _TypeScript:_  clear, helpful and explicit use of TypeScript.
+4. _Documentation:_  clear and well commented your code.
 5. _Git processes:_ clear and well-structured your commits and commit messages are.
 
 ## Prerequisites
@@ -69,7 +69,6 @@ The app has the following structure:
 To set up the codebase and the required dependencies, simply run the following command.
 
 ```bash
-# Set up tools:
 $ npm i
 ```
 
