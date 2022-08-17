@@ -13,16 +13,30 @@ import {
 } from "@material-ui/core";
 import "../../css/productdetails.css";
 import { Add, Remove } from "@material-ui/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import React from "react";
 import TrueIcon from "../Icons/trueicon.svg";
+import { useSelector, useDispatch } from 'react-redux';
+import { getSingleProduct } from '../../actions';
+
 const option = ["XS", "S", "ML", "L", "XL"];
 
 const ProdDetail = () => {
   const [countValue, setCountvalue] = useState(0);
   const [optionvalue, setOptionValue] = useState(option[0]);
+
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state: any) => state.productData.isLoading)
+  const getSignleProduct = useSelector((state: any) => state.productData.products)
+
+  console.log("getSignleProduct==",getSignleProduct );
+
+  useEffect(() => {
+    dispatch(getSingleProduct(1));
+
+  }, [])
 
   return (
     <>
