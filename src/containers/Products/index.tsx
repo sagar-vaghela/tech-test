@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import '../../css/product.css';
@@ -18,6 +18,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProducts } from '../../actions';
+import usePagination from '../../lib/pagination';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,8 +40,8 @@ function valuetext(value: any) {
 }
 const Products = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState([20, 37]);
-  const [age, setAge] = React.useState('');
+  const [value, setValue] = useState([20, 37]);
+  const [age, setAge] = useState('');
   const handleChange1 = (event: React.ChangeEvent<{ value: unknown }>) => {
     setAge(event.target.value as string);
   };
@@ -60,6 +61,20 @@ const Products = () => {
   }, [])
   
 
+  const [page, setPage] = useState(1);
+  const PER_PAGE = 6;
+
+  const count = Math.ceil(products.length / PER_PAGE);
+  const _DATA = usePagination(products, PER_PAGE);
+
+
+  const handleChangePagination = (e: any, p: number) => {
+    setPage(p);
+    _DATA.jump(p);
+  };
+
+  console.log("_DATA", _DATA);
+  
 
   return (
     <div className={classes.root}>
@@ -232,11 +247,11 @@ const Products = () => {
           </Grid>
           <Grid className="imagListSection">
             <Grid container spacing={3} className={'ImgListContent'}>
-              {products?.map((product: any, i: number) => 
+              {_DATA.currentData().map((product: any, i: number) => 
                 (<Grid item xs={4} key={i}>
                   <Grid className={'ImgContainer'}>
                     <Grid className={'ContainerImg'}>
-                      <img src={product.image} alt="" />
+                      <img height={296} src={product.image} alt="" />
                       <Grid className={'HeartImgSection'}>
                         <img className={'HeartImg'} src={Heart} alt="" />
                       </Grid>
@@ -257,7 +272,14 @@ const Products = () => {
             </Grid>
           </Grid>
           <Grid className={'pagignationSection'}>
-            <Pagination count={10} showFirstButton showLastButton />
+            <Pagination
+              count={count}
+              size="large"
+              page={page}
+              variant="outlined"
+              shape="rounded"
+              onChange={handleChangePagination}
+            />
           </Grid>
         </Grid>
       </Grid>
