@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import '../../css/product.css';
@@ -18,7 +18,8 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProducts, getAllCategories, getSpecificProducts } from '../../actions';
-import useState from 'react';
+import usePagination from '../../lib/pagination';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -97,7 +98,20 @@ const Products = () => {
     
     setProducts(sliderProduct);
   };
+  const [page, setPage] = useState(1);
+  const PER_PAGE = 6;
 
+  const count = Math.ceil(products.length / PER_PAGE);
+  const _DATA = usePagination(products, PER_PAGE);
+
+
+  const handleChangePagination = (e: any, p: number) => {
+    setPage(p);
+    _DATA.jump(p);
+  };
+
+  console.log("_DATA", _DATA);
+  
   return (
     <div className={classes.root}>
       <Grid container spacing={3} className={'containerClass'}>
@@ -230,15 +244,21 @@ const Products = () => {
           </Grid>
           <Grid className="imagListSection">
             <Grid container spacing={3} className={'ImgListContent'}>
-              {products.length > 0 && products?.map((product: any, i: number) =>
-              (<Grid item xs={4} key={i}>
-                <Grid className={'ImgContainer'}>
-                  <Grid className={'ContainerImg'}>
-                    <img src={product.image} alt="" />
-                    <Grid className={'HeartImgSection'}>
-                      <img className={'HeartImg'} src={Heart} alt="" />
+
+              {_DATA.currentData().map((product: any, i: number) => 
+                (
+            <Link to= "/productdetails" key={i}>
+
+                <Grid item xs={4} >
+
+                  <Grid className={'ImgContainer'}>
+                    <Grid className={'ContainerImg'}>
+                      <img height={296} src={product.image} alt="" />
+                      <Grid className={'HeartImgSection'}>
+                        <img className={'HeartImg'} src={Heart} alt="" />
+                      </Grid>
                     </Grid>
-                  </Grid>
+       
                   <Grid className={'ImgListContentDetails'}>
                     <Typography className={'title'}>{product.category}</Typography>
                     <Typography variant="h5" className={'subTitle'}>
@@ -249,12 +269,23 @@ const Products = () => {
                     </Typography>
                   </Grid>
                 </Grid>
-              </Grid>)
+
+              </Grid>
+              </Link>
+
+              )
               )}
             </Grid>
           </Grid>
           <Grid className={'pagignationSection'}>
-            <Pagination count={10} showFirstButton showLastButton />
+            <Pagination
+              count={count}
+              size="large"
+              page={page}
+              variant="outlined"
+              shape="rounded"
+              onChange={handleChangePagination}
+            />
           </Grid>
         </Grid>
       </Grid>
