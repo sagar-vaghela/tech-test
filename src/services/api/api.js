@@ -8,6 +8,10 @@ const handleCatchError = (error) => {
 const API_URL = 'https://fakestoreapi.com';
 
 // sample get request
-export const getProducts = async (limit) => {
+export const getProductsLimit = async (limit) => {
   return get(`${API_URL}/products?limit=${limit}`).catch(handleCatchError);
+};
+
+export const getAllProducts = async () => {
+  return get(`${API_URL}/products`).catch(handleCatchError);
 };
