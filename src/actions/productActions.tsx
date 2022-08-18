@@ -1,4 +1,4 @@
-import { AppThunk } from '../interfaces';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   GET_PRODUCTS_FAILED,
   GET_PRODUCTS_STARTED,
@@ -37,7 +37,7 @@ export const getProducts = (): any => async (dispatch: any) => {
     .then((res) => {
       dispatch(getProductsSucceeded(res));
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(getProductsFailed('error.response'));
     });
 };
@@ -93,7 +93,7 @@ export const getCategories = (): any => async (dispatch: any) => {
     .then((res) => {
       dispatch(getCategoriesSucceeded(res));
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(getCategoriesFailed('error.response'));
     });
 };
@@ -122,7 +122,7 @@ export const getSingleProduct =
       .then((res) => {
         dispatch(getSingleSucceeded(res));
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(getSingleFailed('error.response'));
       });
   };

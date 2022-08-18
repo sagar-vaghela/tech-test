@@ -52,6 +52,7 @@ const Products = () => {
   };
 
   const dispatch = useDispatch();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getProductsList = useSelector((state: any) => state.productData.products);
   const getCategoriesList = useSelector((state: IProduct) => state.productData.product);
 

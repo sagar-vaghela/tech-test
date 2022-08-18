@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ThunkAction } from 'redux-thunk';
 import { Action } from '@reduxjs/toolkit';
 

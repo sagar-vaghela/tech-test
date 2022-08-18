@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IAddCart } from '../interfaces';
 import {
   ADD_CART_STARTED,
