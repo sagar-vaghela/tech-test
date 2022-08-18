@@ -1,4 +1,4 @@
-import { AppThunk } from '../interfaces';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   GET_PRODUCTS_FAILED,
   GET_PRODUCTS_STARTED,
@@ -12,6 +12,9 @@ import {
   SELECT_CATEGORY_STARTED,
   SELECT_CATEGORY_SUCCEEDED,
   SELECT_CATEGORY_FAILED,
+  GET_PRODUCT_SORT_STARTED,
+  GET_PRODUCT_SORT_SUCCEEDED,
+  GET_PRODUCT_SORT_FAILED,
 } from '../lib/constants/actionTypes';
 import * as ProductService from '../services/api';
 
@@ -20,7 +23,7 @@ const getProductsStarted = () => ({
   type: GET_PRODUCTS_STARTED
 });
 
-const getProductsSucceeded = (data: any) => ({
+const getProductsSucceeded = (data: object) => ({
   type: GET_PRODUCTS_SUCCEEDED,
   payload: data
 });
@@ -37,7 +40,7 @@ export const getProducts = (): any => async (dispatch: any) => {
     .then((res) => {
       dispatch(getProductsSucceeded(res));
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(getProductsFailed('error.response'));
     });
 };
@@ -47,7 +50,7 @@ const getSpecificProductsStarted = () => ({
   type: GET_SPECIFIC_PRODUCTS_STARTED
 });
 
-const getSpecificProductsSucceeded = (data: any) => ({
+const getSpecificProductsSucceeded = (data: object) => ({
   type: GET_SPECIFIC_PRODUCTS_SUCCEEDED,
   payload: data
 });
@@ -66,7 +69,7 @@ export const getSpecificProducts =
       .then((res) => {
         dispatch(getSpecificProductsSucceeded(res));
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(getSpecificProductsFailed('error.response'));
       });
   };
@@ -76,7 +79,7 @@ const getCategoriesStarted = () => ({
   type: SELECT_CATEGORY_STARTED
 });
 
-const getCategoriesSucceeded = (data: any) => ({
+const getCategoriesSucceeded = (data: object) => ({
   type: SELECT_CATEGORY_SUCCEEDED,
   payload: data
 });
@@ -93,7 +96,7 @@ export const getCategories = (): any => async (dispatch: any) => {
     .then((res) => {
       dispatch(getCategoriesSucceeded(res));
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(getCategoriesFailed('error.response'));
     });
 };
@@ -115,14 +118,43 @@ const getSingleFailed = (error: string) => ({
 });
 
 export const getSingleProduct =
-  (id: number): any =>
+  (id: string | undefined): any =>
   async (dispatch: any) => {
     dispatch(getSingleStarted());
     await ProductService.getSingleProduct(id)
       .then((res) => {
         dispatch(getSingleSucceeded(res));
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(getSingleFailed('error.response'));
+      });
+  };
+
+//Get Product Sorting
+const getProductSortStarted = () => ({
+  type: GET_PRODUCT_SORT_STARTED
+});
+
+const getProductSortSucceeded = (data: any) => ({
+  type: GET_PRODUCT_SORT_SUCCEEDED,
+  payload: data
+});
+
+const getProductSortFailed = (error: string) => ({
+  type: GET_PRODUCT_SORT_FAILED,
+  payload: error,
+  error: true
+});
+
+  export const getProductSortProduct =
+  (sort: string): any =>
+  async (dispatch: any) => {
+    dispatch(getProductSortStarted());
+    await ProductService.getProductSortProduct(sort)
+      .then((res) => {
+        dispatch(getProductSortSucceeded(res));
+      })
+      .catch(() => {
+        dispatch(getProductSortFailed('error.response'));
       });
   };

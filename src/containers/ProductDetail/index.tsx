@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Params, useParams } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import {
   Grid,
@@ -19,12 +19,16 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import TrueIcon from '../../components/Icons/trueicon.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { addCart, getSingleProduct, updateCart } from '../../actions';
+import { IProduct } from '../../interfaces';
 
 const option = ['XS', 'S', 'ML', 'L', 'XL'];
 
 const ProductDetail = () => {
-  const { id } : any = useParams();
-  const product = useSelector((state: any) => state.productData.product);
+  const { id } = useParams<Params<string>>();
+
+  const product = useSelector((state: IProduct) => state.productData.product);
+
+  const dispatch = useDispatch();
   const [countValue, setCountvalue] = useState(1);
   const [optionvalue, setOptionValue] = useState(option[0]);
 
@@ -32,23 +36,20 @@ const ProductDetail = () => {
     dispatch(getSingleProduct(id));
   }, [id]);
 
-  const dispatch = useDispatch();
-
   const handleAddToCart = () => {
     const payload = {
       userId: 5,
       date: new Date(),
-      products:[{productId: id, quantity: countValue}]
-    }
-    const cartId: any = localStorage.getItem('cartId');
-    if(cartId) {
+      products: [{ productId: id, quantity: countValue }]
+    };
+    const cartId = localStorage.getItem('cartId');
+    if (cartId) {
       dispatch(updateCart(cartId, payload)); // update
-    }
-    else {
+    } else {
       dispatch(addCart(payload));
     }
-  }
-  
+  };
+
   return (
     <>
       <Grid className="wrapper">
@@ -111,7 +112,8 @@ const ProductDetail = () => {
                 value={optionvalue}
                 onChange={(event) => {
                   setOptionValue(event.target.value);
-                }}>
+                }}
+              >
                 {option.map((option) => (
                   <MenuItem key={option} value={option}>
                     {option}
@@ -124,9 +126,10 @@ const ProductDetail = () => {
                 className="plusMinusbutton"
                 size="small"
                 onClick={() => {
-                  if(countValue === 1) return;
+                  if (countValue === 1) return;
                   setCountvalue(countValue - 1);
-                }}>
+                }}
+              >
                 <Remove />
               </IconButton>
               <TextField
@@ -144,7 +147,8 @@ const ProductDetail = () => {
                 size="small"
                 onClick={() => {
                   setCountvalue(countValue + 1);
-                }}>
+                }}
+              >
                 <Add />
               </IconButton>
             </Grid>
@@ -161,7 +165,8 @@ const ProductDetail = () => {
                 variant="contained"
                 className="button"
                 onClick={handleAddToCart}
-                style={{ backgroundColor: '#F86338', color: 'white' }}>
+                style={{ backgroundColor: '#F86338', color: 'white' }}
+              >
                 Add to Cart
                 <ShoppingCartIcon style={{ marginLeft: '23px' }} />
               </Button>
@@ -179,27 +184,7 @@ const ProductDetail = () => {
         <Grid container spacing={3} style={{ marginTop: '15px' }}>
           <Grid item md={6}>
             <Typography className="descriptiontitle"> Description </Typography>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
-            </p>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-              laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-              architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-              sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-              voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit
-              amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut
-              labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-              nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
-              commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-              esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
-              nulla pariatur
-            </p>
+            <p>{product.description}</p>
           </Grid>
           <Grid item sm={6}>
             <Typography className="descriptiontitle"> Fabric Details </Typography>

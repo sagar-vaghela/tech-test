@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ThunkAction } from 'redux-thunk';
 import { Action } from '@reduxjs/toolkit';
 
@@ -11,15 +12,18 @@ export interface categoryType {
   name: string;
   id: string;
 }
-
+export interface ratingType {
+  count: number;
+  rate: number;
+}
 export interface productType {
-  createdAt: string;
-  name: string;
-  avatar: string;
-  id: string;
-  price: string;
   category: string;
   description: string;
+  id: number;
+  image: string;
+  price: number;
+  rating: ratingType;
+  title: string;
 }
 
 export interface productDataType {
@@ -48,7 +52,33 @@ export interface IError {
 export interface headerParams {
   headers?: {
     Accept?: string;
-  }
+  };
+}
+export interface cartData {
+  carts: string;
+  cart: string;
+  isLoading: boolean;
+  error: string;
+}
+export interface Carts {
+  cartData: cartData;
+}
+export interface IProduct {
+  productData: productDataType;
+}
+
+export interface IHeaderProps {
+  renderlocation: void;
+}
+
+export interface Productspayload {
+  productId: string | undefined;
+  quantity: number;
+}
+export interface IAddCart {
+  userId: number;
+  date: Date;
+  products: Productspayload[]
 }
 
 export type AppThunk = ThunkAction<void, initialStateType, null, Action<string>>;

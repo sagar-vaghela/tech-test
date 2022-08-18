@@ -3,7 +3,7 @@
 This is a React Application with TypeScript based E-commerce app and configured with:
 
 1. **Linters:** ESLint and Prettier.
-2. **TypeScript and React specific folders:** `components`, `containers`, `store`, `icons`, `interfaces`, `lib`, `reducers`, `routes`, `services`, and `actions` (Folder Structure).
+2. **TypeScript and React specific folders:** `components`, `containers`, `store`, `icons`, `interfaces`, `lib`, `reducers`, `routes`, `services`,`css`, and `actions` (Folder Structure).
 3. **Styled-Components:** configured Material-UI types.
 4. **Redux:** for state management.
 
