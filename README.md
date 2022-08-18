@@ -3,7 +3,7 @@
 This is a React Application with TypeScript based E-commerce app and configured with:
 
 1. **Linters:** ESLint and Prettier.
-2. **TypeScript and React specific folders:** `components`, `containers`, `store`, `icons`, `interfaces`, `lib`, `reducers`, `routes`, `services`, and `actions` (Folder Structure).
+2. **TypeScript and React specific folders:** `components`, `containers`, `store`, `icons`, `interfaces`, `lib`, `reducers`, `routes`, `services`,`css`, and `actions` (Folder Structure).
 3. **Styled-Components:** configured Material-UI types.
 4. **Redux:** for state management.
 
@@ -26,27 +26,27 @@ The app has the following structure:
 
 ### Tasks : What I done.
 
-1. Create React Application with TypeScript based E-commerce app.
+1. Create React Application with TypeScript-based E-commerce app.
 2. Used Material UI for Design - https://v4.mui.com/
 3. Used this Template for design - https://www.figma.com/file/f2lq64bTjXzIWLojR096bs/Fashion-Website-TemplateKit?node-id=1%3A3
 4. App perform like below step,
-   - Home Screen
-     - Click on Shop button
-     - User can see the Current location on Header.
-   - Products Screen
-     - Click on any product and redirect to Product Detail Page
-     - Filters functionality
-     - Sorting functionality.
-     - Search functionality.
-     - Pagination.
-   - Product Details Page
-     - Click on Add to Cart button
-   - Cart Screen
-     - List of Card and you can remove from Cart As well.
-5. App is resonsive as much as i can.
-6. Divide component as much as i can. It could be more but due to time constraint i did not done more.
+   - Home Screen
+     - Click on the Shop button
+     - User can see the Current location on the Header.
+   - Products Screen
+     - Click on any product and redirect to the Product Detail Page
+     - Filters functionality
+     - Sorting functionality.
+     - Search functionality.
+     - Pagination.
+   - Product Details Page
+     - Click on Add to Cart button
+   - Cart Screen
+     - List of Card and you can remove them from Cart As well.
+5. App is responsive as much as I can.
+6. Divide components as much as I can. It could be more but due to time constraints, I did not do more.
 7. Used CRUD APIs from these docs - https://fakestoreapi.com/docs for retrieving the product details.
-8. Setup ESLint for Code standardrization.
+8. Setup ESLint for Code standardization.
 9. Setup Prettier for Code format.
 10. WriteTechnical documentation on README.md file for how approach and solution.
 11. Implementation of geo-location which gets the current user’s location.
