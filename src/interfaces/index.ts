@@ -20,6 +20,8 @@ export interface productType {
   price: string;
   category: string;
   description: string;
+  image?:string;
+  title?:string;
 }
 
 export interface productDataType {

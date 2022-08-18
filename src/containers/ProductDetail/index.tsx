@@ -19,7 +19,6 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import TrueIcon from '../../components/Icons/trueicon.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { addCart, getSingleProduct, updateCart } from '../../actions';
-import { initialStateType } from '../../interfaces';
 import { IProduct } from '../../interfaces';
 
 

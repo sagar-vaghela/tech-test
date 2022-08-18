@@ -20,6 +20,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getProducts, getCategories, getSpecificProducts } from '../../actions';
 import usePagination from '../../lib/pagination';
 import { Link } from 'react-router-dom';
+import { IProduct, productType } from '../../interfaces';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Products = () => {
   const classes = useStyles();
-  const [value, setValue]: any = useState();
+  const [value, setValue] = useState<number | number[]>(0);
   const [age, setAge] = useState('');
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
@@ -47,13 +48,14 @@ const Products = () => {
   const handleChange1 = (event: React.ChangeEvent<{ value: unknown }>) => {
     setAge(event.target.value as string);
   };
-  const handleChange = (newValue: any) => {
+  const handleChange = (newValue: number | number[]) => {
     setValue(newValue);
   };
 
   const dispatch = useDispatch();
   const getProductsList = useSelector((state: any) => state.productData.products);
-  const getCategoriesList = useSelector((state: any) => state.productData.product);
+  const getCategoriesList = useSelector((state: IProduct) => state.productData.product);
+console.log("getProductsList",getProductsList);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -95,7 +97,7 @@ const Products = () => {
   const count = Math.ceil(products.length / PER_PAGE);
   const _DATA = usePagination(products, PER_PAGE);
 
-  const handleChangePagination = (e: any, p: number) => {
+  const handleChangePagination = (e: React.ChangeEvent<unknown>, p: number) => {
     setPage(p);
     _DATA.jump(p);
   };
@@ -171,7 +173,7 @@ const Products = () => {
             </Grid>
 
             {category.length > 0 &&
-              category?.map((category: any, i: number) => (
+              category?.map((category: string, i: number) => (
                 <Grid
                   className={'categarySectionContent'}
                   key={i}
@@ -233,7 +235,7 @@ const Products = () => {
           </Grid>
           <Grid className="imagListSection">
             <Grid container spacing={3} className={'ImgListContent'}>
-              {_DATA.currentData().map((product: any, i: number) => (
+              {_DATA.currentData().map((product: productType, i: number) => (
                 <Grid item xs={4} key={i}>
                   <Link to={`/product/${product.id}`} className="Link-Decorate">
                     <Grid className={'ImgContainer'}>
