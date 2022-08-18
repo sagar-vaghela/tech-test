@@ -1,10 +1,11 @@
-import { Avatar, Grid, Link, Typography } from '@material-ui/core';
+import { Avatar, Grid, Typography, Link as Anchor } from '@material-ui/core';
 import CallIcon from '@material-ui/icons/Call';
 import HeaderIcon from '../Icons/Headerlogo.svg';
 import '../../css/header.css';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import { Link } from 'react-router-dom';
 
 const avtarname = ['Fb', 'Tw', 'Ig', 'Yt'];
 
@@ -40,24 +41,28 @@ const Header = (props: any) => {
       <Grid container xs={12}>
         <Grid item sm={9}>
           <div className="details">
-            <Link href="" className="homepage" color="textPrimary">
+            <Anchor href="" className="homepage" color="textPrimary">
               Home
-            </Link>
-            <Link href="" className="homepage" color="textPrimary">
+            </Anchor>
+            <Anchor href="" className="homepage" color="textPrimary">
               About
-            </Link>
-            <Link href="" className="homepage" color="textPrimary">
+            </Anchor>
+            <Anchor href="" className="homepage" color="textPrimary">
               FAQ
-            </Link>
-            <Link href="" className="homepage" color="textPrimary">
+            </Anchor>
+            <Anchor href="" className="homepage" color="textPrimary">
               Blog
-            </Link>
+            </Anchor>
           </div>
         </Grid>
         <Grid item sm={3}>
           <div className="iconsection">
-            <FavoriteBorderIcon style={{ marginRight: '33px' }} fontSize="medium" />
-            <ShoppingCartIcon style={{ marginRight: '33px' }} fontSize="medium" />
+            <Link to="/products" className="homepage" color="textPrimary">
+              <FavoriteBorderIcon style={{ marginRight: '33px' }} fontSize="medium" />
+            </Link>
+            <Link to="/cart" className="homepage" color="textPrimary">
+              <ShoppingCartIcon style={{ marginRight: '33px' }} fontSize="medium" />
+            </Link>
             <PermIdentityIcon fontSize="medium" />
           </div>
         </Grid>

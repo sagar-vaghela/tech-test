@@ -22,3 +22,19 @@ export const getCategories = async () => {
 export const getSingleProduct = async (id: number) => {
   return get(`${API_URL}/products/${id}`).catch(handleCatchError);
 };
+
+export const getCarts = async (id: number | string) => {
+  return get(`${API_URL}/carts/${id}`).catch(handleCatchError);
+};
+
+export const addCart = async (payload: object) => {
+  return post(`${API_URL}/carts`, {
+    body: JSON.stringify(payload),
+  });
+};
+
+export const updateCart = async (cartId: string | number, payload: object) => {
+  return put(`${API_URL}/carts/${cartId}`, {
+    body: JSON.stringify(payload),
+  });
+};

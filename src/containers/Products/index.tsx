@@ -36,16 +36,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2)
   }
 }));
-function valuetext(value: any) {
-  return `${value}°C`;
-}
+
 const Products = () => {
   const classes = useStyles();
-  const [value, setValue]: any = React.useState();
-  const [age, setAge] = React.useState('');
-  const [products, setProducts] = React.useState([]);
-  const [category, setCategory] = React.useState([]);
-  const [selectCategory, setSelectCategory]: any = React.useState([]);
+  const [value, setValue]: any = useState();
+  const [age, setAge] = useState('');
+  const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState([]);
 
   const handleChange1 = (event: React.ChangeEvent<{ value: unknown }>) => {
     setAge(event.target.value as string);
@@ -55,13 +52,8 @@ const Products = () => {
   };
 
   const dispatch = useDispatch();
-  const isLoading = useSelector((state: any) => state.productData.isLoading);
   const getProductsList = useSelector((state: any) => state.productData.products);
   const getCategoriesList = useSelector((state: any) => state.productData.product);
-
-  // console.log("getProductsList", getProductsList);
-  // console.log("getCategoriesList", getCategoriesList);
-  // console.log("isLoading", isLoading);
 
   useEffect(() => {
     dispatch(getProducts());

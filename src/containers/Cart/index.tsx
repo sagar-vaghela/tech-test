@@ -14,6 +14,10 @@ import '../../css/cart.css';
 import TableIcon from '../../components/Icons/tableicon.svg';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from '@material-ui/core/Typography';
+import { getCarts } from '../../actions';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Carts } from '../../interfaces';
 
 const rows = [
   {
@@ -37,6 +41,21 @@ const rows = [
 ];
 
 const Cart = () => {
+  const [carts, setCarts] = useState([]);
+  const dispatch = useDispatch();
+
+  const cartsList = useSelector((state:Carts) => state.cartData.carts);
+
+  useEffect(() => {
+    const cartId = localStorage.getItem('cartId');
+    console.log("cartId", cartId);
+    if(!cartId) return
+    dispatch(getCarts(cartId));
+  }, []);
+
+
+  console.log("cartsList", cartsList);
+  
   return (
     <Grid className="heading">
       <Grid className="carttitle">Cart</Grid>
