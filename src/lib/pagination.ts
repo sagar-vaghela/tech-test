@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { productType } from '../interfaces';
 
-function usePagination(data: any, itemsPerPage: number) {
+function usePagination(data: productType[], itemsPerPage: number) {
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(data.length / itemsPerPage);
 

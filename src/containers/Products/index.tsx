@@ -5,7 +5,6 @@ import '../../css/product.css';
 import Filter from '../../icons/filter.svg';
 import ColorPlaceholder from '../../icons/colorPlaceholder.svg';
 import RightArr from '../../icons/rightArrow.svg';
-import ImgContainer from '../../icons/imgContainer.svg';
 import Heart from '../../icons/heart.svg';
 import Search from '../../icons/search.svg';
 import Slider from '@material-ui/core/Slider';
@@ -14,12 +13,13 @@ import Pagination from '@material-ui/lab/Pagination';
 import Typography from '@material-ui/core/Typography';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProducts, getCategories, getSpecificProducts } from '../../actions';
+import { getProducts, getCategories, getSpecificProducts, getProductSortProduct } from '../../actions';
 import usePagination from '../../lib/pagination';
 import { Link } from 'react-router-dom';
+import { IProduct, productType} from '../../interfaces';
+import { Select, MenuItem } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,26 +39,30 @@ const useStyles = makeStyles((theme) => ({
 
 const Products = () => {
   const classes = useStyles();
-  const [value, setValue]: any = React.useState();
-  const [age, setAge] = React.useState('');
-  const [products, setProducts] = React.useState([]);
-  const [category, setCategory] = React.useState([]);
+  const [value, setValue] = useState<number | number[]>(0);
+  const [sortOrder, setSortOrder] = useState('asc');
+  const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState([]);
 
-  const handleChange1 = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setAge(event.target.value as string);
+  const handleChangeSort = (event: React.ChangeEvent<unknown> ) => {
+    const sortProuct = (event.target as HTMLInputElement).value;
+    dispatch(getProductSortProduct(sortProuct));
+    setSortOrder(sortProuct);
   };
-  const handleChange = (newValue: any) => {
-    setValue(newValue);
+
+  const handleChange = (newValue: number | number[]) => {
+    setValue(newValue); 
   };
 
   const dispatch = useDispatch();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getProductsList = useSelector((state: any) => state.productData.products);
-  const getCategoriesList = useSelector((state: any) => state.productData.product);
+  const getCategoriesList = useSelector((state: IProduct) => state.productData.product);
 
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
-  }, []);
+  }, []); 
 
   useEffect(() => {
     if (getProductsList.length > 0 || getCategoriesList.length > 0) {
@@ -70,6 +74,10 @@ const Products = () => {
   useEffect(() => {
     sliderProducts();
   }, [value]);
+
+  useEffect(() => {
+    dispatch(getProductSortProduct(sortOrder));
+  }, [sortOrder]);
 
   const sliderProducts = () => {
     const sliderProduct = getProductsList.filter((item: { price: number }) => item.price <= value);
@@ -85,7 +93,6 @@ const Products = () => {
     const sliderProduct = getProductsList.filter((item: { title: string }) =>
       item.title.includes(searchValue)
     );
-    console.log('sliderProduct', sliderProduct);
 
     setProducts(sliderProduct);
   };
@@ -95,12 +102,10 @@ const Products = () => {
   const count = Math.ceil(products.length / PER_PAGE);
   const _DATA = usePagination(products, PER_PAGE);
 
-  const handleChangePagination = (e: any, p: number) => {
+  const handleChangePagination = (e: React.ChangeEvent<unknown>, p: number) => {
     setPage(p);
     _DATA.jump(p);
   };
-
-  console.log('_DATA', _DATA);
 
   return (
     <div className={classes.root}>
@@ -171,7 +176,7 @@ const Products = () => {
             </Grid>
 
             {category.length > 0 &&
-              category?.map((category: any, i: number) => (
+              category?.map((category: string, i: number) => (
                 <Grid
                   className={'categarySectionContent'}
                   key={i}
@@ -215,15 +220,26 @@ const Products = () => {
               <Grid item xs={6} className={'alignRight'}>
                 <Grid className={'sortTxt'}>Sort By</Grid>
                 <Grid className={'sortTxtFilter'}>
+
                   <FormControl>
-                    {/* <InputLabel htmlFor="demo-customized-select-native">Age</InputLabel> */}
-                    <NativeSelect value={age} onChange={handleChange1}>
-                      {/* <option aria-label="None" value="" /> */}
+                    {/* <NativeSelect value={age} onChange={handleChange1}>
                       <option value={10}>Ten</option>
                       <option value={20}>Twenty</option>
                       <option value={30}>Thirty</option>
-                    </NativeSelect>
+                    </NativeSelect> */}
+
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={sortOrder}
+                      onChange={handleChangeSort}
+                    >
+                      <MenuItem value={'asc'}>asc</MenuItem>
+                      <MenuItem value={'desc'}>desc</MenuItem>
+                    </Select>
+
                   </FormControl>
+
                 </Grid>
                 <Grid className={'IconBtn'}>
                   <FormatListBulletedIcon />
@@ -233,7 +249,7 @@ const Products = () => {
           </Grid>
           <Grid className="imagListSection">
             <Grid container spacing={3} className={'ImgListContent'}>
-              {_DATA.currentData().map((product: any, i: number) => (
+              {_DATA.currentData().map((product: productType, i: number) => (
                 <Grid item xs={4} key={i}>
                   <Link to={`/product/${product.id}`} className="Link-Decorate">
                     <Grid className={'ImgContainer'}>
