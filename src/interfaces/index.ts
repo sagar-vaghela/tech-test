@@ -11,17 +11,18 @@ export interface categoryType {
   name: string;
   id: string;
 }
-
+export interface ratingType {
+  count: number;
+  rate: number
+}
 export interface productType {
-  createdAt: string;
-  name: string;
-  avatar: string;
-  id: string;
-  price: string;
   category: string;
   description: string;
-  image?:string;
-  title?:string;
+  id: number;
+  image:string;
+  price: number;
+  rating:ratingType;
+  title:string;
 }
 
 export interface productDataType {
@@ -61,8 +62,6 @@ export interface cartData {
 export interface Carts {
   cartData : cartData
 }
-
-
 export interface IProduct{
     productData: productDataType
 }

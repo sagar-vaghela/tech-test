@@ -55,7 +55,6 @@ const Products = () => {
   const dispatch = useDispatch();
   const getProductsList = useSelector((state: any) => state.productData.products);
   const getCategoriesList = useSelector((state: IProduct) => state.productData.product);
-console.log("getProductsList",getProductsList);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -87,8 +86,6 @@ console.log("getProductsList",getProductsList);
     const sliderProduct = getProductsList.filter((item: { title: string }) =>
       item.title.includes(searchValue)
     );
-    console.log('sliderProduct', sliderProduct);
-
     setProducts(sliderProduct);
   };
   const [page, setPage] = useState(1);
@@ -101,8 +98,6 @@ console.log("getProductsList",getProductsList);
     setPage(p);
     _DATA.jump(p);
   };
-
-  console.log('_DATA', _DATA);
 
   return (
     <div className={classes.root}>
