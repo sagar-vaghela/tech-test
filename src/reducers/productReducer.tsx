@@ -10,7 +10,10 @@ import {
   SELECT_CATEGORY_FAILED,
   GET_SPECIFIC_PRODUCTS_STARTED,
   GET_SPECIFIC_PRODUCTS_SUCCEEDED,
-  GET_SPECIFIC_PRODUCTS_FAILED
+  GET_SPECIFIC_PRODUCTS_FAILED,
+  GET_PRODUCT_SORT_STARTED,
+  GET_PRODUCT_SORT_SUCCEEDED,
+  GET_PRODUCT_SORT_FAILED,
 } from '../lib/constants/actionTypes';
 import initialState from './initialState';
 
@@ -89,6 +92,25 @@ const productReducer = (
         isLoading: false
       };
     case GET_SPECIFIC_PRODUCTS_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+
+      case GET_PRODUCT_SORT_STARTED:
+      return {
+        ...state,
+        isLoading: true,
+        error: null
+      };
+    case GET_PRODUCT_SORT_SUCCEEDED:
+      return {
+        ...state,
+        products: action.payload,
+        isLoading: false
+      };
+    case GET_PRODUCT_SORT_FAILED:
       return {
         ...state,
         isLoading: false,

@@ -77,6 +77,10 @@ export interface Productspayload {
 export interface IAddCart {
   userId: number;
   date: Date;
-  products: Productspayload[];
+  products: Productspayload[]
 }
+export interface SelectChangeEvent {
+  target: any;
+}
+
 export type AppThunk = ThunkAction<void, initialStateType, null, Action<string>>;

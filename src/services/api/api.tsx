@@ -38,3 +38,9 @@ export const updateCart = async (cartId: string | number, payload: object) => {
     body: JSON.stringify(payload)
   });
 };
+
+export const getProductSortProduct = async (sort: string) => {
+  return get(`${API_URL}/products?sort=${sort}`, {
+  });
+};
+

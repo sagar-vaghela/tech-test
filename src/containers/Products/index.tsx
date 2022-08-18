@@ -5,6 +5,7 @@ import '../../css/product.css';
 import Filter from '../../icons/filter.svg';
 import ColorPlaceholder from '../../icons/colorPlaceholder.svg';
 import RightArr from '../../icons/rightArrow.svg';
+import ImgContainer from '../../icons/imgContainer.svg';
 import Heart from '../../icons/heart.svg';
 import Search from '../../icons/search.svg';
 import Slider from '@material-ui/core/Slider';
@@ -16,10 +17,11 @@ import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProducts, getCategories, getSpecificProducts } from '../../actions';
+import { getProducts, getCategories, getSpecificProducts, getProductSortProduct } from '../../actions';
 import usePagination from '../../lib/pagination';
 import { Link } from 'react-router-dom';
-import { IProduct, productType } from '../../interfaces';
+import { IProduct, productType, SelectChangeEvent } from '../../interfaces';
+import { Select, MenuItem } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,13 +42,16 @@ const useStyles = makeStyles((theme) => ({
 const Products = () => {
   const classes = useStyles();
   const [value, setValue] = useState<number | number[]>(0);
-  const [age, setAge] = useState('');
+  const [sortOrder, setSortOrder] = useState('asc');
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
 
-  const handleChange1 = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setAge(event.target.value as string);
+  const handleChangeSort = (event: any )=>  {
+    const sortProuct = event.target.value;
+    dispatch(getProductSortProduct(sortProuct));
+    setSortOrder(event.target.value);
   };
+
   const handleChange = (newValue: number | number[]) => {
     setValue(newValue);
   };
@@ -58,7 +63,7 @@ const Products = () => {
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
-  }, []);
+  }, []); 
 
   useEffect(() => {
     if (getProductsList.length > 0 || getCategoriesList.length > 0) {
@@ -70,6 +75,10 @@ const Products = () => {
   useEffect(() => {
     sliderProducts();
   }, [value]);
+
+  useEffect(() => {
+    dispatch(getProductSortProduct(sortOrder));
+  }, [sortOrder]);
 
   const sliderProducts = () => {
     const sliderProduct = getProductsList.filter((item: { price: number }) => item.price <= value);
@@ -85,6 +94,7 @@ const Products = () => {
     const sliderProduct = getProductsList.filter((item: { title: string }) =>
       item.title.includes(searchValue)
     );
+
     setProducts(sliderProduct);
   };
   const [page, setPage] = useState(1);
@@ -211,15 +221,26 @@ const Products = () => {
               <Grid item xs={6} className={'alignRight'}>
                 <Grid className={'sortTxt'}>Sort By</Grid>
                 <Grid className={'sortTxtFilter'}>
+
                   <FormControl>
-                    {/* <InputLabel htmlFor="demo-customized-select-native">Age</InputLabel> */}
-                    <NativeSelect value={age} onChange={handleChange1}>
-                      {/* <option aria-label="None" value="" /> */}
+                    {/* <NativeSelect value={age} onChange={handleChange1}>
                       <option value={10}>Ten</option>
                       <option value={20}>Twenty</option>
                       <option value={30}>Thirty</option>
-                    </NativeSelect>
+                    </NativeSelect> */}
+
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={sortOrder}
+                      onChange={handleChangeSort}
+                    >
+                      <MenuItem value={'asc'}>asc</MenuItem>
+                      <MenuItem value={'desc'}>desc</MenuItem>
+                    </Select>
+
                   </FormControl>
+
                 </Grid>
                 <Grid className={'IconBtn'}>
                   <FormatListBulletedIcon />

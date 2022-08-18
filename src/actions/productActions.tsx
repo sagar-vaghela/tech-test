@@ -11,7 +11,10 @@ import {
   GET_SPECIFIC_PRODUCTS_FAILED,
   SELECT_CATEGORY_STARTED,
   SELECT_CATEGORY_SUCCEEDED,
-  SELECT_CATEGORY_FAILED
+  SELECT_CATEGORY_FAILED,
+  GET_PRODUCT_SORT_STARTED,
+  GET_PRODUCT_SORT_SUCCEEDED,
+  GET_PRODUCT_SORT_FAILED,
 } from '../lib/constants/actionTypes';
 import * as ProductService from '../services/api';
 
@@ -124,5 +127,34 @@ export const getSingleProduct =
       })
       .catch((error) => {
         dispatch(getSingleFailed('error.response'));
+      });
+  };
+
+//Get Product Sorting
+const getProductSortStarted = () => ({
+  type: GET_PRODUCT_SORT_STARTED
+});
+
+const getProductSortSucceeded = (data: any) => ({
+  type: GET_PRODUCT_SORT_SUCCEEDED,
+  payload: data
+});
+
+const getProductSortFailed = (error: string) => ({
+  type: GET_PRODUCT_SORT_FAILED,
+  payload: error,
+  error: true
+});
+
+  export const getProductSortProduct =
+  (sort: string): any =>
+  async (dispatch: any) => {
+    dispatch(getProductSortStarted());
+    await ProductService.getProductSortProduct(sort)
+      .then((res) => {
+        dispatch(getProductSortSucceeded(res));
+      })
+      .catch((error) => {
+        dispatch(getProductSortFailed('error.response'));
       });
   };
