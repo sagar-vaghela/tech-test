@@ -20,7 +20,7 @@ const getProductsStarted = () => ({
   type: GET_PRODUCTS_STARTED
 });
 
-const getProductsSucceeded = (data: any) => ({
+const getProductsSucceeded = (data: object) => ({
   type: GET_PRODUCTS_SUCCEEDED,
   payload: data
 });
@@ -47,7 +47,7 @@ const getSpecificProductsStarted = () => ({
   type: GET_SPECIFIC_PRODUCTS_STARTED
 });
 
-const getSpecificProductsSucceeded = (data: any) => ({
+const getSpecificProductsSucceeded = (data: object) => ({
   type: GET_SPECIFIC_PRODUCTS_SUCCEEDED,
   payload: data
 });
@@ -66,7 +66,7 @@ export const getSpecificProducts =
       .then((res) => {
         dispatch(getSpecificProductsSucceeded(res));
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(getSpecificProductsFailed('error.response'));
       });
   };
@@ -76,7 +76,7 @@ const getCategoriesStarted = () => ({
   type: SELECT_CATEGORY_STARTED
 });
 
-const getCategoriesSucceeded = (data: any) => ({
+const getCategoriesSucceeded = (data: object) => ({
   type: SELECT_CATEGORY_SUCCEEDED,
   payload: data
 });

@@ -1,4 +1,4 @@
-import { AppThunk } from '../interfaces';
+import { AppThunk, IAddCart } from '../interfaces';
 import {
   ADD_CART_STARTED,
   ADD_CART_SUCCEEDED,
@@ -19,7 +19,7 @@ const addCartStarted = () => ({
   type: ADD_CART_STARTED
 });
 
-const addCartSucceeded = (data: any) => ({
+const addCartSucceeded = (data: IAddCart) => ({
   type: ADD_CART_SUCCEEDED,
   payload: data
 });
@@ -30,14 +30,14 @@ const addCartFailed = (error: string) => ({
   error: true
 });
 
-export const addCart = (payload: object): any => async (dispatch: any) => {
+export const addCart = (payload: IAddCart): any  => async (dispatch:any) => {
   dispatch(addCartStarted());
   await ProductService.addCart(payload)
     .then((res) => {
       localStorage.setItem('cartId', res.id)
       dispatch(addCartSucceeded(res));
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(addCartFailed('error.response'));
     });
 };
@@ -47,7 +47,7 @@ const updateCartStarted = () => ({
   type: UPDATE_CART_STARTED
 });
 
-const updateCartSucceeded = (data: any) => ({
+const updateCartSucceeded = (data: IAddCart) => ({
   type: UPDATE_CART_SUCCEEDED,
   payload: data
 });
@@ -58,13 +58,13 @@ const updateCartFailed = (error: string) => ({
   error: true
 });
 
-  export const updateCart = (cartId: string | number, payload: object): any => async (dispatch: any) => {
+  export const updateCart = (cartId: string | number, payload: IAddCart): any  => async (dispatch: any) => {
     dispatch(updateCartStarted());
     await ProductService.updateCart(cartId, payload)
       .then((res) => {
         dispatch(updateCartSucceeded(res));
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(updateCartFailed('error.response'));
       });
   };
@@ -74,7 +74,7 @@ const getCartsStarted = () => ({
   type: GET_CARTS_STARTED
 });
 
-const getCartsSucceeded = (data: any) => ({
+const getCartsSucceeded = (data: string) => ({
   type: GET_CARTS_SUCCEEDED,
   payload: data
 });
@@ -93,7 +93,7 @@ const getCartsFailed = (error: string) => ({
         
         dispatch(getCartsSucceeded(res));
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(getCartsFailed('error.response'));
       });
   };
