@@ -1,4 +1,4 @@
-import { get, post, put, del } from '../fetch';
+import { get, post, put } from '../fetch';
 
 const handleCatchError = (error: string) => {
   // Keeping this as it will help to throw Promise.reject error
@@ -19,7 +19,7 @@ export const getCategories = async () => {
   return get(`${API_URL}/products/categories`).catch(handleCatchError);
 };
 
-export const getSingleProduct = async (id: string|undefined) => {
+export const getSingleProduct = async (id: string | undefined) => {
   return get(`${API_URL}/products/${id}`).catch(handleCatchError);
 };
 
@@ -29,12 +29,12 @@ export const getCarts = async (id: number | string) => {
 
 export const addCart = async (payload: object) => {
   return post(`${API_URL}/carts`, {
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   });
 };
 
 export const updateCart = async (cartId: string | number, payload: object) => {
   return put(`${API_URL}/carts/${cartId}`, {
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   });
 };

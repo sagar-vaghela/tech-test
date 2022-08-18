@@ -5,7 +5,6 @@ import '../../css/product.css';
 import Filter from '../../icons/filter.svg';
 import ColorPlaceholder from '../../icons/colorPlaceholder.svg';
 import RightArr from '../../icons/rightArrow.svg';
-import ImgContainer from '../../icons/imgContainer.svg';
 import Heart from '../../icons/heart.svg';
 import Search from '../../icons/search.svg';
 import Slider from '@material-ui/core/Slider';

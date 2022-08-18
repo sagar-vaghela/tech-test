@@ -1,4 +1,4 @@
-import { AppThunk, IAddCart } from '../interfaces';
+import { IAddCart } from '../interfaces';
 import {
   ADD_CART_STARTED,
   ADD_CART_SUCCEEDED,
@@ -8,13 +8,11 @@ import {
   UPDATE_CART_FAILED,
   GET_CARTS_STARTED,
   GET_CARTS_SUCCEEDED,
-  GET_CARTS_FAILED,
-
-  
+  GET_CARTS_FAILED
 } from '../lib/constants/actionTypes';
 import * as ProductService from '../services/api';
 
-//Add to Cart 
+//Add to Cart
 const addCartStarted = () => ({
   type: ADD_CART_STARTED
 });
@@ -30,19 +28,23 @@ const addCartFailed = (error: string) => ({
   error: true
 });
 
-export const addCart = (payload: IAddCart): any  => async (dispatch:any) => {
-  dispatch(addCartStarted());
-  await ProductService.addCart(payload)
-    .then((res) => {
-      localStorage.setItem('cartId', res.id)
-      dispatch(addCartSucceeded(res));
-    })
-    .catch(() => {
-      dispatch(addCartFailed('error.response'));
-    });
-};
+export const addCart =
+  (payload: IAddCart): any =>
+  async (
+    dispatch: (arg0: { type: string; payload?: string | IAddCart; error?: boolean }) => void
+  ) => {
+    dispatch(addCartStarted());
+    await ProductService.addCart(payload)
+      .then((res) => {
+        localStorage.setItem('cartId', res.id);
+        dispatch(addCartSucceeded(res));
+      })
+      .catch(() => {
+        dispatch(addCartFailed('error.response'));
+      });
+  };
 
-//update to Cart 
+//update to Cart
 const updateCartStarted = () => ({
   type: UPDATE_CART_STARTED
 });
@@ -58,7 +60,9 @@ const updateCartFailed = (error: string) => ({
   error: true
 });
 
-  export const updateCart = (cartId: string | number, payload: IAddCart): any  => async (dispatch: any) => {
+export const updateCart =
+  (cartId: string | number, payload: IAddCart): any =>
+  async (dispatch: any) => {
     dispatch(updateCartStarted());
     await ProductService.updateCart(cartId, payload)
       .then((res) => {
@@ -69,7 +73,7 @@ const updateCartFailed = (error: string) => ({
       });
   };
 
-  //get to Carts
+//get to Carts
 const getCartsStarted = () => ({
   type: GET_CARTS_STARTED
 });
@@ -85,12 +89,14 @@ const getCartsFailed = (error: string) => ({
   error: true
 });
 
-  export const getCarts = (cartId: string | number): any => async (dispatch: any) => {
+export const getCarts =
+  (cartId: string | number): any =>
+  async (dispatch: any) => {
     dispatch(getCartsStarted());
     await ProductService.getCarts(cartId)
       .then((res) => {
-        console.log("res", res);
-        
+        console.log('res', res);
+
         dispatch(getCartsSucceeded(res));
       })
       .catch(() => {

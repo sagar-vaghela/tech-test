@@ -11,7 +11,7 @@ import {
   GET_SPECIFIC_PRODUCTS_FAILED,
   SELECT_CATEGORY_STARTED,
   SELECT_CATEGORY_SUCCEEDED,
-  SELECT_CATEGORY_FAILED,
+  SELECT_CATEGORY_FAILED
 } from '../lib/constants/actionTypes';
 import * as ProductService from '../services/api';
 
@@ -115,7 +115,7 @@ const getSingleFailed = (error: string) => ({
 });
 
 export const getSingleProduct =
-  (id: string|undefined): any =>
+  (id: string | undefined): any =>
   async (dispatch: any) => {
     dispatch(getSingleStarted());
     await ProductService.getSingleProduct(id)

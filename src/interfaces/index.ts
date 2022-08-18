@@ -1,6 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
 import { Action } from '@reduxjs/toolkit';
-import { Component } from 'react';
 
 export interface initialStateType {
   productData: productDataType;
@@ -14,16 +13,16 @@ export interface categoryType {
 }
 export interface ratingType {
   count: number;
-  rate: number
+  rate: number;
 }
 export interface productType {
   category: string;
   description: string;
   id: number;
-  image:string;
+  image: string;
   price: number;
-  rating:ratingType;
-  title:string;
+  rating: ratingType;
+  title: string;
 }
 
 export interface productDataType {
@@ -52,32 +51,32 @@ export interface IError {
 export interface headerParams {
   headers?: {
     Accept?: string;
-  }
+  };
 }
 export interface cartData {
   carts: string;
   cart: string;
-  isLoading : boolean;
+  isLoading: boolean;
   error: string;
 }
 export interface Carts {
-  cartData : cartData
+  cartData: cartData;
 }
-export interface IProduct{
-    productData: productDataType
+export interface IProduct {
+  productData: productDataType;
 }
 
-export interface IHeaderProps{
+export interface IHeaderProps {
   renderlocation: void;
 }
 
-export interface Productspayload{
+export interface Productspayload {
   productId: string | undefined;
   quantity: number;
 }
-export interface IAddCart{
-  userId: number,
-  date: Date,
-  products:Productspayload[]
+export interface IAddCart {
+  userId: number;
+  date: Date;
+  products: Productspayload[];
 }
 export type AppThunk = ThunkAction<void, initialStateType, null, Action<string>>;

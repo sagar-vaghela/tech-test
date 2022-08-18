@@ -26,7 +26,7 @@ const option = ['XS', 'S', 'ML', 'L', 'XL'];
 const ProductDetail = () => {
   const { id } = useParams<Params<string>>();
 
-const product = useSelector((state: IProduct) => state.productData.product);
+  const product = useSelector((state: IProduct) => state.productData.product);
 
   const dispatch = useDispatch();
   const [countValue, setCountvalue] = useState(1);
@@ -36,22 +36,20 @@ const product = useSelector((state: IProduct) => state.productData.product);
     dispatch(getSingleProduct(id));
   }, [id]);
 
-
   const handleAddToCart = () => {
     const payload = {
       userId: 5,
       date: new Date(),
-      products:[{productId: id, quantity: countValue}]
-    }
+      products: [{ productId: id, quantity: countValue }]
+    };
     const cartId = localStorage.getItem('cartId');
-    if(cartId) {
+    if (cartId) {
       dispatch(updateCart(cartId, payload)); // update
-    }
-    else {
+    } else {
       dispatch(addCart(payload));
     }
-  }
-  
+  };
+
   return (
     <>
       <Grid className="wrapper">
@@ -114,7 +112,8 @@ const product = useSelector((state: IProduct) => state.productData.product);
                 value={optionvalue}
                 onChange={(event) => {
                   setOptionValue(event.target.value);
-                }}>
+                }}
+              >
                 {option.map((option) => (
                   <MenuItem key={option} value={option}>
                     {option}
@@ -127,9 +126,10 @@ const product = useSelector((state: IProduct) => state.productData.product);
                 className="plusMinusbutton"
                 size="small"
                 onClick={() => {
-                  if(countValue === 1) return;
+                  if (countValue === 1) return;
                   setCountvalue(countValue - 1);
-                }}>
+                }}
+              >
                 <Remove />
               </IconButton>
               <TextField
@@ -147,7 +147,8 @@ const product = useSelector((state: IProduct) => state.productData.product);
                 size="small"
                 onClick={() => {
                   setCountvalue(countValue + 1);
-                }}>
+                }}
+              >
                 <Add />
               </IconButton>
             </Grid>
@@ -164,7 +165,8 @@ const product = useSelector((state: IProduct) => state.productData.product);
                 variant="contained"
                 className="button"
                 onClick={handleAddToCart}
-                style={{ backgroundColor: '#F86338', color: 'white' }}>
+                style={{ backgroundColor: '#F86338', color: 'white' }}
+              >
                 Add to Cart
                 <ShoppingCartIcon style={{ marginLeft: '23px' }} />
               </Button>
@@ -182,9 +184,7 @@ const product = useSelector((state: IProduct) => state.productData.product);
         <Grid container spacing={3} style={{ marginTop: '15px' }}>
           <Grid item md={6}>
             <Typography className="descriptiontitle"> Description </Typography>
-            <p>
-              {product.description}
-            </p>
+            <p>{product.description}</p>
           </Grid>
           <Grid item sm={6}>
             <Typography className="descriptiontitle"> Fabric Details </Typography>

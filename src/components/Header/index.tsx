@@ -16,7 +16,7 @@ const Header = (props: any) => {
   return (
     <div>
       <Grid container spacing={3} xs={12}>
-        <Grid item sm={3} >
+        <Grid item sm={3}>
           <Typography className="mobilephone">
             <CallIcon style={{ paddingTop: '10px' }} />
             +022 319 821 967
