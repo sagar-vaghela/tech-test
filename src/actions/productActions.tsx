@@ -154,7 +154,7 @@ const getProductSortFailed = (error: string) => ({
       .then((res) => {
         dispatch(getProductSortSucceeded(res));
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(getProductSortFailed('error.response'));
       });
   };

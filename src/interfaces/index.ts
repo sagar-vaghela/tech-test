@@ -80,8 +80,5 @@ export interface IAddCart {
   date: Date;
   products: Productspayload[]
 }
-export interface SelectChangeEvent {
-  target: any;
-}
 
 export type AppThunk = ThunkAction<void, initialStateType, null, Action<string>>;

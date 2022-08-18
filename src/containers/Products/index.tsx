@@ -5,7 +5,6 @@ import '../../css/product.css';
 import Filter from '../../icons/filter.svg';
 import ColorPlaceholder from '../../icons/colorPlaceholder.svg';
 import RightArr from '../../icons/rightArrow.svg';
-import ImgContainer from '../../icons/imgContainer.svg';
 import Heart from '../../icons/heart.svg';
 import Search from '../../icons/search.svg';
 import Slider from '@material-ui/core/Slider';
@@ -14,13 +13,12 @@ import Pagination from '@material-ui/lab/Pagination';
 import Typography from '@material-ui/core/Typography';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProducts, getCategories, getSpecificProducts, getProductSortProduct } from '../../actions';
 import usePagination from '../../lib/pagination';
 import { Link } from 'react-router-dom';
-import { IProduct, productType, SelectChangeEvent } from '../../interfaces';
+import { IProduct, productType} from '../../interfaces';
 import { Select, MenuItem } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -46,14 +44,14 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
 
-  const handleChangeSort = (event: any )=>  {
-    const sortProuct = event.target.value;
+  const handleChangeSort = (event: React.ChangeEvent<unknown> ) => {
+    const sortProuct = (event.target as HTMLInputElement).value;
     dispatch(getProductSortProduct(sortProuct));
-    setSortOrder(event.target.value);
+    setSortOrder(sortProuct);
   };
 
   const handleChange = (newValue: number | number[]) => {
-    setValue(newValue);
+    setValue(newValue); 
   };
 
   const dispatch = useDispatch();
