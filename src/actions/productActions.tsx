@@ -115,7 +115,7 @@ const getSingleFailed = (error: string) => ({
 });
 
 export const getSingleProduct =
-  (id: number): any =>
+  (id: string|undefined): any =>
   async (dispatch: any) => {
     dispatch(getSingleStarted());
     await ProductService.getSingleProduct(id)

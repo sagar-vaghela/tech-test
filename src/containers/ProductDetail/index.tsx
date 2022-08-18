@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Params, useParams } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import {
   Grid,
@@ -20,12 +20,17 @@ import TrueIcon from '../../components/Icons/trueicon.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { addCart, getSingleProduct, updateCart } from '../../actions';
 import { initialStateType } from '../../interfaces';
+import { IProduct } from '../../interfaces';
+
 
 const option = ['XS', 'S', 'ML', 'L', 'XL'];
 
 const ProductDetail = () => {
-  const { id }:any = useParams();
-  const product = useSelector((state: initialStateType) => state.productData.product);
+  const { id } = useParams<Params<string>>();
+
+const product = useSelector((state: IProduct) => state.productData.product);
+
+  const dispatch = useDispatch();
   const [countValue, setCountvalue] = useState(1);
   const [optionvalue, setOptionValue] = useState(option[0]);
 
@@ -33,7 +38,6 @@ const ProductDetail = () => {
     dispatch(getSingleProduct(id));
   }, [id]);
 
-  const dispatch = useDispatch();
 
   const handleAddToCart = () => {
     const payload = {

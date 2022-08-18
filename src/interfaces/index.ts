@@ -61,4 +61,8 @@ export interface Carts {
 }
 
 
+export interface IProduct{
+    productData: productDataType
+}
+
 export type AppThunk = ThunkAction<void, initialStateType, null, Action<string>>;

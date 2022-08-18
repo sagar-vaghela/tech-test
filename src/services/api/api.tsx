@@ -19,7 +19,7 @@ export const getCategories = async () => {
   return get(`${API_URL}/products/categories`).catch(handleCatchError);
 };
 
-export const getSingleProduct = async (id: number) => {
+export const getSingleProduct = async (id: string|undefined) => {
   return get(`${API_URL}/products/${id}`).catch(handleCatchError);
 };
 
