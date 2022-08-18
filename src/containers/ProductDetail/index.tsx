@@ -19,12 +19,13 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import TrueIcon from '../../components/Icons/trueicon.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { addCart, getSingleProduct, updateCart } from '../../actions';
+import { initialStateType } from '../../interfaces';
 
 const option = ['XS', 'S', 'ML', 'L', 'XL'];
 
 const ProductDetail = () => {
-  const { id } : any = useParams();
-  const product = useSelector((state: any) => state.productData.product);
+  const { id }:any = useParams();
+  const product = useSelector((state: initialStateType) => state.productData.product);
   const [countValue, setCountvalue] = useState(1);
   const [optionvalue, setOptionValue] = useState(option[0]);
 
@@ -40,7 +41,7 @@ const ProductDetail = () => {
       date: new Date(),
       products:[{productId: id, quantity: countValue}]
     }
-    const cartId: any = localStorage.getItem('cartId');
+    const cartId = localStorage.getItem('cartId');
     if(cartId) {
       dispatch(updateCart(cartId, payload)); // update
     }

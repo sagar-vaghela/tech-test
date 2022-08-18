@@ -7,7 +7,7 @@ import initialState from './initialState';
 
 const cartReducer = (
   state = initialState.cartData,
-  action: { type: string; payload: any }
+  action: { type: string; payload: object }
 ) => {
   switch (action.type) {
     case GET_CARTS_STARTED:

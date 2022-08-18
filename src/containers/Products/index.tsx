@@ -39,10 +39,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Products = () => {
   const classes = useStyles();
-  const [value, setValue]: any = React.useState();
-  const [age, setAge] = React.useState('');
-  const [products, setProducts] = React.useState([]);
-  const [category, setCategory] = React.useState([]);
+  const [value, setValue]: any = useState();
+  const [age, setAge] = useState('');
+  const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState([]);
 
   const handleChange1 = (event: React.ChangeEvent<{ value: unknown }>) => {
     setAge(event.target.value as string);

@@ -50,5 +50,15 @@ export interface headerParams {
     Accept?: string;
   }
 }
+export interface cartData {
+  carts: string;
+  cart: string;
+  isLoading : boolean;
+  error: string;
+}
+export interface Carts {
+  cartData : cartData
+}
+
 
 export type AppThunk = ThunkAction<void, initialStateType, null, Action<string>>;

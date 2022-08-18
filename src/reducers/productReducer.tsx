@@ -16,7 +16,7 @@ import initialState from './initialState';
 
 const productReducer = (
   state = initialState.productData,
-  action: { type: string; payload: any }
+  action: { type: string; payload: object }
 ) => {
   switch (action.type) {
     case GET_PRODUCTS_STARTED:
