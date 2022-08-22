@@ -29,7 +29,6 @@ module.exports = {
   testPathIgnorePatterns: ['/node_modules/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   collectCoverage: true,
-  cacheDirectory: '<rootDir>/.jest-cache',
   coverageDirectory: '<rootDir>/test-results',
   coverageThreshold: {
     global: {
