@@ -2,6 +2,7 @@ import { Footer, Header } from './components';
 import { useGeolocated } from 'react-geolocated';
 import ShoppingRoutes from './routes';
 import { useEffect } from 'react';
+import { Router, Routes } from 'react-router-dom';
 
 const App = () => {
   useEffect(() => {
@@ -32,7 +33,7 @@ const App = () => {
 
   return (
     <>
-      <Header renderlocation={renderGeoLocation} />
+      <Header renderlocation={renderGeoLocation()} />
       <ShoppingRoutes />
       <Footer />
     </>

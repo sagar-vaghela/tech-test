@@ -1,0 +1,38 @@
+53747359762771201be67294c7e02c2d
+"use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("react/jsx-runtime");
+var react_1 = require("@testing-library/react");
+var index_1 = __importDefault(require("../src/components/Header/index"));
+var react_router_dom_1 = require("react-router-dom");
+afterEach(function () {
+    (0, react_1.cleanup)(); // Resets the DOM after each test suite
+});
+var TestComponent = function (_a) {
+    var _b = _a.mockProps, mockProps = _b === void 0 ? {} : _b;
+    var props = __assign({}, mockProps);
+    return (0, jsx_runtime_1.jsx)(index_1.default, __assign({}, props));
+};
+describe("Header Component", function () {
+    (0, react_1.render)((0, jsx_runtime_1.jsx)(react_router_dom_1.BrowserRouter, { children: (0, jsx_runtime_1.jsx)(TestComponent, {}) }));
+    var headerEle = react_1.screen.getByTestId("header");
+    // Test 1
+    test("Header Rendering", function () {
+        expect(headerEle).toBeInTheDocument();
+    });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL21hYy9Eb2N1bWVudHMvUHJvamVjdHMvdGVjaC10ZXN0L19fdGVzdHNfXy9oZWFkZXIudGVzdC50c3giLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFDQSxnREFBaUU7QUFDakUseUVBQW9EO0FBQ3BELHFEQUF5RDtBQUV6RCxTQUFTLENBQUM7SUFDUixJQUFBLGVBQU8sR0FBRSxDQUFDLENBQUMsdUNBQXVDO0FBQ3BELENBQUMsQ0FBQyxDQUFBO0FBRUYsSUFBTSxhQUFhLEdBQUcsVUFBQyxFQUFrQjtRQUFoQixpQkFBYyxFQUFkLFNBQVMsbUJBQUcsRUFBRSxLQUFBO0lBQ3JDLElBQU0sS0FBSyxnQkFDTixTQUFTLENBQ2IsQ0FBQztJQUNGLE9BQU8sdUJBQUMsZUFBTSxlQUFLLEtBQUssRUFBSyxDQUFDO0FBQ2hDLENBQUMsQ0FBQztBQUVGLFFBQVEsQ0FBQyxrQkFBa0IsRUFBRTtJQUMzQixJQUFBLGNBQU0sRUFDSix1QkFBQyxnQ0FBTSxjQUNQLHVCQUFDLGFBQWEsS0FBRSxHQUNQLENBQ1YsQ0FBQztJQUNGLElBQU0sU0FBUyxHQUFHLGNBQU0sQ0FBQyxXQUFXLENBQUMsUUFBUSxDQUFDLENBQUM7SUFFL0MsU0FBUztJQUNULElBQUksQ0FBQyxrQkFBa0IsRUFBRTtRQUNyQixNQUFNLENBQUMsU0FBUyxDQUFDLENBQUMsaUJBQWlCLEVBQUUsQ0FBQztJQUMxQyxDQUFDLENBQUMsQ0FBQTtBQUVKLENBQUMsQ0FBQyxDQUFDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYWMvRG9jdW1lbnRzL1Byb2plY3RzL3RlY2gtdGVzdC9fX3Rlc3RzX18vaGVhZGVyLnRlc3QudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBjbGVhbnVwLCByZW5kZXIsIHNjcmVlbiB9IGZyb20gJ0B0ZXN0aW5nLWxpYnJhcnkvcmVhY3QnO1xuaW1wb3J0IEhlYWRlciBmcm9tICcuLi9zcmMvY29tcG9uZW50cy9IZWFkZXIvaW5kZXgnO1xuaW1wb3J0IHtCcm93c2VyUm91dGVyIGFzIFJvdXRlcn0gZnJvbSAncmVhY3Qtcm91dGVyLWRvbSc7XG5cbmFmdGVyRWFjaCgoKSA9PiB7XG4gIGNsZWFudXAoKTsgLy8gUmVzZXRzIHRoZSBET00gYWZ0ZXIgZWFjaCB0ZXN0IHN1aXRlXG59KVxuXG5jb25zdCBUZXN0Q29tcG9uZW50ID0gKHsgbW9ja1Byb3BzID0ge30gfSkgPT4ge1xuICBjb25zdCBwcm9wcyA9IHtcbiAgICAuLi5tb2NrUHJvcHMsXG4gIH07XG4gIHJldHVybiA8SGVhZGVyIHsuLi5wcm9wc30gIC8+O1xufTtcblxuZGVzY3JpYmUoXCJIZWFkZXIgQ29tcG9uZW50XCIgLCgpID0+IHtcbiAgcmVuZGVyKFxuICAgIDxSb3V0ZXI+XG4gICAgPFRlc3RDb21wb25lbnQvPlxuICAgIDwvUm91dGVyPlxuICApOyBcbiAgY29uc3QgaGVhZGVyRWxlID0gc2NyZWVuLmdldEJ5VGVzdElkKFwiaGVhZGVyXCIpOyBcbiAgICBcbiAgLy8gVGVzdCAxXG4gIHRlc3QoXCJIZWFkZXIgUmVuZGVyaW5nXCIsICgpID0+IHtcbiAgICAgIGV4cGVjdChoZWFkZXJFbGUpLnRvQmVJblRoZURvY3VtZW50KCk7IFxuICB9KVxuXG59KTtcbiJdLCJ2ZXJzaW9uIjozfQ==

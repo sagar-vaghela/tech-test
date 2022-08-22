@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <div className="container">
+    <div className="container" data-testid="hero">
       <div className="left">
         <div className="left-wrapper">
           <Typography variant="h2">

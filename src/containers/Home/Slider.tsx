@@ -36,6 +36,7 @@ const test = [
 ];
 const Slider = () => {
   return (
+    <div data-testid="slider">
     <Carousel cols={4} rows={1} gap={0} loop>
       {test.map((test, index) => {
         return (
@@ -63,6 +64,7 @@ const Slider = () => {
         );
       })}
     </Carousel>
+    </div>
   );
 };
 export default Slider;

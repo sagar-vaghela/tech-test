@@ -1,13 +1,13 @@
-import '../../css/footer.css';
 import FooterIcon from '../Icons/Footerlogo.svg';
 import { Typography } from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import PhoneIcon from '@material-ui/icons/Phone';
+import '../../css/footer.css';
 
 const Footer = () => {
   return (
-    <div className="footercontainer">
+    <div className="footercontainer" data-testid="footer" > 
       <div className="left">
         <div className="LogoContainer">
           <img src={FooterIcon} alt="" className="Logo" />

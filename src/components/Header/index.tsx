@@ -14,7 +14,7 @@ const Header = (props: any) => {
   const { renderlocation } = props;
 
   return (
-    <div>
+    <div data-testid = "header">
       <Grid container spacing={3} xs={12}>
         <Grid item sm={3}>
           <Typography className="mobilephone">
@@ -37,7 +37,8 @@ const Header = (props: any) => {
           </div>
         </Grid>
       </Grid>
-      <div style={{ paddingLeft: '90px', paddingTop: '10px' }}>{renderlocation()}</div>
+      <div style={{ paddingLeft: '90px', paddingTop: '10px' }}>{renderlocation}</div>
+      
       <Grid container xs={12}>
         <Grid item sm={9}>
           <div className="details">

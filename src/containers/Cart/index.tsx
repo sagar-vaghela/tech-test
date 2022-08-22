@@ -55,7 +55,7 @@ const Cart = () => {
   console.log('cartsList', cartsList);
 
   return (
-    <Grid className="heading">
+    <Grid className="heading" data-testid = "cart">
       <Grid className="carttitle">Cart</Grid>
       <TableContainer component={Paper} className="tablecontainer">
         <Table aria-label="simple table">

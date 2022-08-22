@@ -1,0 +1,730 @@
+107d856a288e15f5f0d18eb31edf405b
+"use strict";
+
+/* istanbul ignore next */
+function cov_mpqtgi2aw() {
+  var path = "/Users/mac/Documents/Projects/tech-test/src/containers/Home/Product.tsx";
+  var hash = "b480ba544dfc52ddf972a736b9755c266186bdc9";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/mac/Documents/Projects/tech-test/src/containers/Home/Product.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 15
+        },
+        end: {
+          line: 12,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 4
+        },
+        end: {
+          line: 10,
+          column: 6
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 8
+        },
+        end: {
+          line: 8,
+          column: 9
+        }
+      },
+      "3": {
+        start: {
+          line: 4,
+          column: 24
+        },
+        end: {
+          line: 4,
+          column: 25
+        }
+      },
+      "4": {
+        start: {
+          line: 4,
+          column: 31
+        },
+        end: {
+          line: 4,
+          column: 47
+        }
+      },
+      "5": {
+        start: {
+          line: 5,
+          column: 12
+        },
+        end: {
+          line: 5,
+          column: 29
+        }
+      },
+      "6": {
+        start: {
+          line: 6,
+          column: 12
+        },
+        end: {
+          line: 7,
+          column: 28
+        }
+      },
+      "7": {
+        start: {
+          line: 6,
+          column: 29
+        },
+        end: {
+          line: 7,
+          column: 28
+        }
+      },
+      "8": {
+        start: {
+          line: 7,
+          column: 16
+        },
+        end: {
+          line: 7,
+          column: 28
+        }
+      },
+      "9": {
+        start: {
+          line: 9,
+          column: 8
+        },
+        end: {
+          line: 9,
+          column: 17
+        }
+      },
+      "10": {
+        start: {
+          line: 11,
+          column: 4
+        },
+        end: {
+          line: 11,
+          column: 43
+        }
+      },
+      "11": {
+        start: {
+          line: 13,
+          column: 22
+        },
+        end: {
+          line: 15,
+          column: 1
+        }
+      },
+      "12": {
+        start: {
+          line: 14,
+          column: 4
+        },
+        end: {
+          line: 14,
+          column: 62
+        }
+      },
+      "13": {
+        start: {
+          line: 16,
+          column: 0
+        },
+        end: {
+          line: 16,
+          column: 62
+        }
+      },
+      "14": {
+        start: {
+          line: 17,
+          column: 20
+        },
+        end: {
+          line: 17,
+          column: 48
+        }
+      },
+      "15": {
+        start: {
+          line: 18,
+          column: 14
+        },
+        end: {
+          line: 18,
+          column: 43
+        }
+      },
+      "16": {
+        start: {
+          line: 19,
+          column: 18
+        },
+        end: {
+          line: 19,
+          column: 78
+        }
+      },
+      "17": {
+        start: {
+          line: 20,
+          column: 14
+        },
+        end: {
+          line: 22,
+          column: 1
+        }
+      },
+      "18": {
+        start: {
+          line: 21,
+          column: 4
+        },
+        end: {
+          line: 21,
+          column: 477
+        }
+      },
+      "19": {
+        start: {
+          line: 23,
+          column: 0
+        },
+        end: {
+          line: 23,
+          column: 26
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 2,
+            column: 42
+          },
+          end: {
+            line: 2,
+            column: 43
+          }
+        },
+        loc: {
+          start: {
+            line: 2,
+            column: 54
+          },
+          end: {
+            line: 12,
+            column: 1
+          }
+        },
+        line: 2
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 3,
+            column: 32
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        },
+        loc: {
+          start: {
+            line: 3,
+            column: 44
+          },
+          end: {
+            line: 10,
+            column: 5
+          }
+        },
+        line: 3
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 13,
+            column: 56
+          },
+          end: {
+            line: 13,
+            column: 57
+          }
+        },
+        loc: {
+          start: {
+            line: 13,
+            column: 71
+          },
+          end: {
+            line: 15,
+            column: 1
+          }
+        },
+        line: 13
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 20,
+            column: 14
+          },
+          end: {
+            line: 20,
+            column: 15
+          }
+        },
+        loc: {
+          start: {
+            line: 20,
+            column: 26
+          },
+          end: {
+            line: 22,
+            column: 1
+          }
+        },
+        line: 20
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 2,
+            column: 15
+          },
+          end: {
+            line: 12,
+            column: 1
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 2,
+            column: 16
+          },
+          end: {
+            line: 2,
+            column: 20
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 24
+          },
+          end: {
+            line: 2,
+            column: 37
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 42
+          },
+          end: {
+            line: 12,
+            column: 1
+          }
+        }],
+        line: 2
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 3,
+            column: 15
+          },
+          end: {
+            line: 10,
+            column: 5
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 3,
+            column: 15
+          },
+          end: {
+            line: 3,
+            column: 28
+          }
+        }, {
+          start: {
+            line: 3,
+            column: 32
+          },
+          end: {
+            line: 10,
+            column: 5
+          }
+        }],
+        line: 3
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 6,
+            column: 29
+          },
+          end: {
+            line: 7,
+            column: 28
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 6,
+            column: 29
+          },
+          end: {
+            line: 7,
+            column: 28
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 6
+      },
+      "3": {
+        loc: {
+          start: {
+            line: 13,
+            column: 22
+          },
+          end: {
+            line: 15,
+            column: 1
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 13,
+            column: 23
+          },
+          end: {
+            line: 13,
+            column: 27
+          }
+        }, {
+          start: {
+            line: 13,
+            column: 31
+          },
+          end: {
+            line: 13,
+            column: 51
+          }
+        }, {
+          start: {
+            line: 13,
+            column: 56
+          },
+          end: {
+            line: 15,
+            column: 1
+          }
+        }],
+        line: 13
+      },
+      "4": {
+        loc: {
+          start: {
+            line: 14,
+            column: 11
+          },
+          end: {
+            line: 14,
+            column: 61
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 14,
+            column: 37
+          },
+          end: {
+            line: 14,
+            column: 40
+          }
+        }, {
+          start: {
+            line: 14,
+            column: 43
+          },
+          end: {
+            line: 14,
+            column: 61
+          }
+        }],
+        line: 14
+      },
+      "5": {
+        loc: {
+          start: {
+            line: 14,
+            column: 12
+          },
+          end: {
+            line: 14,
+            column: 33
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 14,
+            column: 12
+          },
+          end: {
+            line: 14,
+            column: 15
+          }
+        }, {
+          start: {
+            line: 14,
+            column: 19
+          },
+          end: {
+            line: 14,
+            column: 33
+          }
+        }],
+        line: 14
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 0,
+      "18": 0,
+      "19": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    b: {
+      "0": [0, 0, 0],
+      "1": [0, 0],
+      "2": [0, 0],
+      "3": [0, 0, 0],
+      "4": [0, 0],
+      "5": [0, 0]
+    },
+    inputSourceMap: {
+      file: "/Users/mac/Documents/Projects/tech-test/src/containers/Home/Product.tsx",
+      mappings: ";;;;;;;;;;;;;;;;;AAAA,4CAA4D;AAC5D,+EAA0D;AAE1D,IAAM,OAAO,GAAG;IACd,OAAO,CACL,0CAAK,SAAS,EAAC,mBAAmB,iBAChC,gCAAK,SAAS,EAAC,QAAQ,GAAG,EAC1B,gCAAK,GAAG,EAAC,EAAE,EAAC,GAAG,EAAE,mBAAU,GAAI,EAE/B,yCAAK,SAAS,EAAC,MAAM,gBACnB,yCAAK,SAAS,EAAC,MAAM,gBACnB,uBAAC,8BAAsB,IAAC,KAAK,EAAE,EAAE,KAAK,EAAE,SAAS,EAAE,GAAI,IACnD,IACF,KACF,CACP,CAAC;AACJ,CAAC,CAAC;AAEF,kBAAe,OAAO,CAAC",
+      names: [],
+      sources: ["/Users/mac/Documents/Projects/tech-test/src/containers/Home/Product.tsx"],
+      sourcesContent: ["import { FavoriteBorderOutlined } from '@material-ui/icons';\nimport SlideImage from '../../components/image/image.svg';\n\nconst Product = () => {\n  return (\n    <div className=\"product-container\">\n      <div className=\"circle\" />\n      <img alt=\"\" src={SlideImage} />\n\n      <div className=\"info\">\n        <div className=\"icon\">\n          <FavoriteBorderOutlined style={{ color: '#F86338' }} />\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default Product;\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "b480ba544dfc52ddf972a736b9755c266186bdc9"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_mpqtgi2aw = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_mpqtgi2aw();
+
+var __assign =
+/* istanbul ignore next */
+(cov_mpqtgi2aw().s[0]++,
+/* istanbul ignore next */
+(cov_mpqtgi2aw().b[0][0]++, this) &&
+/* istanbul ignore next */
+(cov_mpqtgi2aw().b[0][1]++, this.__assign) ||
+/* istanbul ignore next */
+(cov_mpqtgi2aw().b[0][2]++, function () {
+  /* istanbul ignore next */
+  cov_mpqtgi2aw().f[0]++;
+  cov_mpqtgi2aw().s[1]++;
+  __assign =
+  /* istanbul ignore next */
+  (cov_mpqtgi2aw().b[1][0]++, Object.assign) ||
+  /* istanbul ignore next */
+  (cov_mpqtgi2aw().b[1][1]++, function (t) {
+    /* istanbul ignore next */
+    cov_mpqtgi2aw().f[1]++;
+    cov_mpqtgi2aw().s[2]++;
+
+    for (var s, i =
+    /* istanbul ignore next */
+    (cov_mpqtgi2aw().s[3]++, 1), n =
+    /* istanbul ignore next */
+    (cov_mpqtgi2aw().s[4]++, arguments.length); i < n; i++) {
+      /* istanbul ignore next */
+      cov_mpqtgi2aw().s[5]++;
+      s = arguments[i];
+
+      /* istanbul ignore next */
+      cov_mpqtgi2aw().s[6]++;
+
+      for (var p in s) {
+        /* istanbul ignore next */
+        cov_mpqtgi2aw().s[7]++;
+
+        if (Object.prototype.hasOwnProperty.call(s, p)) {
+          /* istanbul ignore next */
+          cov_mpqtgi2aw().b[2][0]++;
+          cov_mpqtgi2aw().s[8]++;
+          t[p] = s[p];
+        } else
+        /* istanbul ignore next */
+        {
+          cov_mpqtgi2aw().b[2][1]++;
+        }
+      }
+    }
+
+    /* istanbul ignore next */
+    cov_mpqtgi2aw().s[9]++;
+    return t;
+  });
+
+  /* istanbul ignore next */
+  cov_mpqtgi2aw().s[10]++;
+  return __assign.apply(this, arguments);
+}));
+
+var __importDefault =
+/* istanbul ignore next */
+(cov_mpqtgi2aw().s[11]++,
+/* istanbul ignore next */
+(cov_mpqtgi2aw().b[3][0]++, this) &&
+/* istanbul ignore next */
+(cov_mpqtgi2aw().b[3][1]++, this.__importDefault) ||
+/* istanbul ignore next */
+(cov_mpqtgi2aw().b[3][2]++, function (mod) {
+  /* istanbul ignore next */
+  cov_mpqtgi2aw().f[2]++;
+  cov_mpqtgi2aw().s[12]++;
+  return (
+    /* istanbul ignore next */
+    (cov_mpqtgi2aw().b[5][0]++, mod) &&
+    /* istanbul ignore next */
+    (cov_mpqtgi2aw().b[5][1]++, mod.__esModule) ?
+    /* istanbul ignore next */
+    (cov_mpqtgi2aw().b[4][0]++, mod) :
+    /* istanbul ignore next */
+    (cov_mpqtgi2aw().b[4][1]++, {
+      "default": mod
+    })
+  );
+}));
+
+/* istanbul ignore next */
+cov_mpqtgi2aw().s[13]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var jsx_runtime_1 =
+/* istanbul ignore next */
+(cov_mpqtgi2aw().s[14]++, require("react/jsx-runtime"));
+var icons_1 =
+/* istanbul ignore next */
+(cov_mpqtgi2aw().s[15]++, require("@material-ui/icons"));
+var image_svg_1 =
+/* istanbul ignore next */
+(cov_mpqtgi2aw().s[16]++, __importDefault(require("../../components/image/image.svg")));
+
+/* istanbul ignore next */
+cov_mpqtgi2aw().s[17]++;
+
+var Product = function () {
+  /* istanbul ignore next */
+  cov_mpqtgi2aw().f[3]++;
+  cov_mpqtgi2aw().s[18]++;
+  return (0, jsx_runtime_1.jsxs)("div", __assign({
+    className: "product-container"
+  }, {
+    children: [(0, jsx_runtime_1.jsx)("div", {
+      className: "circle"
+    }), (0, jsx_runtime_1.jsx)("img", {
+      alt: "",
+      src: image_svg_1.default
+    }), (0, jsx_runtime_1.jsx)("div", __assign({
+      className: "info"
+    }, {
+      children: (0, jsx_runtime_1.jsx)("div", __assign({
+        className: "icon"
+      }, {
+        children: (0, jsx_runtime_1.jsx)(icons_1.FavoriteBorderOutlined, {
+          style: {
+            color: '#F86338'
+          }
+        })
+      }))
+    }))]
+  }));
+};
+
+/* istanbul ignore next */
+cov_mpqtgi2aw().s[19]++;
+exports.default = Product;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUE7QUFBQTtBQUFBO0FBQ0E7QUFBQTtBQUFBOzs7OztBQUVBLElBQU1BLE9BQU8sR0FBRztFQUFBO0VBQUE7RUFBQTtFQUNkLE9BQ0U7SUFBS0MsU0FBUyxFQUFDO0VBQWYsR0FBa0M7SUFBQUMsV0FDaEM7TUFBS0QsU0FBUyxFQUFDO0lBQWYsRUFEZ0MsRUFFaEM7TUFBS0UsR0FBRyxFQUFDLEVBQVQ7TUFBWUMsR0FBRyxFQUFFQztJQUFqQixFQUZnQyxFQUloQztNQUFLSixTQUFTLEVBQUM7SUFBZixHQUFxQjtNQUFBQyxVQUNuQjtRQUFLRCxTQUFTLEVBQUM7TUFBZixHQUFxQjtRQUFBQyxVQUNuQix1QkFBQ0ksOEJBQUQsRUFBdUI7VUFBQ0MsS0FBSyxFQUFFO1lBQUVDLEtBQUssRUFBRTtVQUFUO1FBQVIsQ0FBdkI7TUFEbUIsQ0FBckI7SUFEbUIsQ0FBckIsRUFKZ0M7RUFBQSxDQUFsQyxFQURGO0FBWUQsQ0FiRDs7OztBQWVBQyxrQkFBZVQsT0FBZiIsIm5hbWVzIjpbIlByb2R1Y3QiLCJjbGFzc05hbWUiLCJjaGlsZHJlbiIsImFsdCIsInNyYyIsImltYWdlX3N2Z18xIiwiaWNvbnNfMSIsInN0eWxlIiwiY29sb3IiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiL1VzZXJzL21hYy9Eb2N1bWVudHMvUHJvamVjdHMvdGVjaC10ZXN0L3NyYy9jb250YWluZXJzL0hvbWUvUHJvZHVjdC50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgRmF2b3JpdGVCb3JkZXJPdXRsaW5lZCB9IGZyb20gJ0BtYXRlcmlhbC11aS9pY29ucyc7XG5pbXBvcnQgU2xpZGVJbWFnZSBmcm9tICcuLi8uLi9jb21wb25lbnRzL2ltYWdlL2ltYWdlLnN2Zyc7XG5cbmNvbnN0IFByb2R1Y3QgPSAoKSA9PiB7XG4gIHJldHVybiAoXG4gICAgPGRpdiBjbGFzc05hbWU9XCJwcm9kdWN0LWNvbnRhaW5lclwiPlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJjaXJjbGVcIiAvPlxuICAgICAgPGltZyBhbHQ9XCJcIiBzcmM9e1NsaWRlSW1hZ2V9IC8+XG5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiaW5mb1wiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImljb25cIj5cbiAgICAgICAgICA8RmF2b3JpdGVCb3JkZXJPdXRsaW5lZCBzdHlsZT17eyBjb2xvcjogJyNGODYzMzgnIH19IC8+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gICk7XG59O1xuXG5leHBvcnQgZGVmYXVsdCBQcm9kdWN0O1xuIl19

@@ -5,7 +5,7 @@ import '../../css/home.css';
 
 const Home = () => {
   return (
-    <div>
+    <div data-testid="home">
       <Hero />
       <HomeProducts />
       <Slider />

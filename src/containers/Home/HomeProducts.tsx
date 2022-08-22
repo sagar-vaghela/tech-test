@@ -2,7 +2,7 @@ import Product from './Product';
 
 const HomeProducts = () => {
   return (
-    <div className="homeproduct-container">
+    <div className="homeproduct-container" data-testid="homeProducts" >
       <Product />
       <Product />
       <Product />

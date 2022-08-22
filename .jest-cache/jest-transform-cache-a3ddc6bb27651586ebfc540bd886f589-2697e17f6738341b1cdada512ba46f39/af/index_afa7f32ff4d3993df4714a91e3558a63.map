@@ -1,0 +1,1 @@
+{"file":"/Users/mac/Documents/Projects/tech-test/src/services/fetch/index.ts","mappings":";;;;;;;;;;;;;;;;AAAA,0CAAwB","names":[],"sources":["/Users/mac/Documents/Projects/tech-test/src/services/fetch/index.ts"],"sourcesContent":["export * from './fetch';\n"],"version":3}
