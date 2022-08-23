@@ -9,12 +9,14 @@ import {
 
 function ShoppingRoutes() {
   return (
+    <div data-testid="routes">
     <Routes>
       <Route path={ROOT_ROUTE} element={<Home />} />
       <Route path={PRODUCTS_ROUTE} element={<Products />} />
       <Route path={PRODUCT_DETAILS_ROUTE} element={<ProductDetail />} />
       <Route path={CART_ROUTE} element={<Cart />} />
     </Routes>
+    </div>
   );
 }
 

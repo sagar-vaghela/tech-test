@@ -51,7 +51,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <>
+    <div data-testid= 'productDetail'>
       <Grid className="wrapper">
         <Grid className={'imagecontainer'}>
           <Grid className={'image'}>
@@ -221,7 +221,7 @@ const ProductDetail = () => {
           </Grid>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 };
 export default ProductDetail;

@@ -108,7 +108,7 @@ const Products = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} data-testid="products">
       <Grid container spacing={3} className={'containerClass'}>
         <Grid item xs={3}>
           <Grid container spacing={3}>

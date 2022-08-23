@@ -1,14 +1,56 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import {BrowserRouter as Router} from 'react-router-dom';
+import { render, screen, waitFor } from '@testing-library/react';
 import Cart from '../src/containers/Cart/index';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { getCarts } from '../src/services/api';
+import { cartData } from '../__mocks__/resposeMocks';
+import thunk from 'redux-thunk';
 
-test('Cart is rendered correctly', () => {
-  render(
-    <Router>
-      <Cart/>
-  </Router>
-  );
-  const heroEle = screen.getByTestId('cart');
-  expect(heroEle).toBeInTheDocument();
+const initialState = cartData;
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
+let store;
+
+// jest.mock('../src/services/api/api.tsx', () => {
+//   const api = jest.requireActual('../src/services/api/api.tsx');
+
+//   return {
+//     ...api,
+//     getCarts: jest.fn(),
+//   };
+// });
+// jest.setTimeout(10000);
+
+// (getCarts as any).mockImplementation(() => {
+//   return new Promise((resolve) => {
+//     resolve(cartData);
+//   });
+// });
+
+jest.mock("../src/services/api", () => {
+  const users = initialState;
+  return {
+    getCarts: jest.fn(() => Promise.resolve(users))
+  };
 });
+
+const TestComponent = () => {
+  store = mockStore(initialState);
+  return (
+    <Provider store={store}>
+    <Cart />
+    </Provider>
+  );
+};
+
+describe('Cart Component', () => {
+  test('Renders Cart component', async () => {
+
+    const { getByTestId } = render(<TestComponent />);
+    const cart = getByTestId('cart');
+    await expect(cart).toBeInTheDocument();
+  });
+
+});
+

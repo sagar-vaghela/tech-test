@@ -55,7 +55,7 @@ export interface headerParams {
   };
 }
 export interface cartData {
-  carts: string;
+  carts: productType[];
   cart: string;
   isLoading: boolean;
   error: string;
