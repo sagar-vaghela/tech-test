@@ -51,7 +51,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <div data-testid= 'productDetail'>
+    <div data-testid="productDetail">
       <Grid className="wrapper">
         <Grid className={'imagecontainer'}>
           <Grid className={'image'}>
@@ -109,11 +109,11 @@ const ProductDetail = () => {
                 select
                 style={{ width: '125px' }}
                 variant="outlined"
+                inputProps={{ 'data-testid': 'select-box' }}
                 value={optionvalue}
                 onChange={(event) => {
                   setOptionValue(event.target.value);
-                }}
-              >
+                }}>
                 {option.map((option) => (
                   <MenuItem key={option} value={option}>
                     {option}
@@ -124,12 +124,12 @@ const ProductDetail = () => {
             <Grid className="plusminusCard" item sm={5}>
               <IconButton
                 className="plusMinusbutton"
+                data-testid="minus-button"
                 size="small"
                 onClick={() => {
                   if (countValue === 1) return;
                   setCountvalue(countValue - 1);
-                }}
-              >
+                }}>
                 <Remove />
               </IconButton>
               <TextField
@@ -145,10 +145,10 @@ const ProductDetail = () => {
               <IconButton
                 className="plusMinusbutton"
                 size="small"
+                data-testid="plus-button"
                 onClick={() => {
                   setCountvalue(countValue + 1);
-                }}
-              >
+                }}>
                 <Add />
               </IconButton>
             </Grid>
@@ -164,9 +164,9 @@ const ProductDetail = () => {
               <Button
                 variant="contained"
                 className="button"
+                data-testid="add-to-cart"
                 onClick={handleAddToCart}
-                style={{ backgroundColor: '#F86338', color: 'white' }}
-              >
+                style={{ backgroundColor: '#F86338', color: 'white' }}>
                 Add to Cart
                 <ShoppingCartIcon style={{ marginLeft: '23px' }} />
               </Button>
