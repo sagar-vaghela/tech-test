@@ -4,10 +4,10 @@ import Cart from '../src/containers/Cart/index';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { getCarts } from '../src/services/api';
-import { cartData } from '../__mocks__/resposeMocks';
+import { cartDummyData } from '../__mocks__/resposeMocks';
 import thunk from 'redux-thunk';
 
-const initialState = cartData;
+const initialState = cartDummyData;
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 let store;
