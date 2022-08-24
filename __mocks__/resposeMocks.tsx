@@ -51,8 +51,6 @@ export const productData = {
 
 export const productDetail = {
 
-  products: [
-    {
       category: "men's clothing",
       description: "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
       id: 1,
@@ -60,10 +58,5 @@ export const productDetail = {
       price: 109.95,
       rating: { rate: 3.9, count: 120 },
       title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-    }
-  ],
-  product: {},
-  isLoading: false,
-  error: null
 
 }

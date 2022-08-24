@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -22,11 +22,31 @@ const TestComponent = () => {
 };
 
 describe('ProductDeatils Component', () => {
-  test('Renders ProductDetails component', async () => {
 
-    const { getByTestId } = render(<TestComponent />);
-    const cart = getByTestId('productDetail');
-    expect(cart).toBeInTheDocument();
+
+  const renderComponent = () => render(<TestComponent />);
+
+  let originFetch : any;
+  beforeEach(() => {
+    originFetch = (global as any).fetch;
+  });
+  afterEach(() => {
+    (global as any).fetch = originFetch;
+  });
+
+  it('Renders ProductDetails component', async () => {
+
+    act(() => {
+      const mRes = { json: jest.fn().mockResolvedValueOnce(initialState) };
+      const mockedFetch = jest.fn().mockResolvedValueOnce(mRes as any);
+      (global as any).fetch = mockedFetch;
+    })
+
+    const { getByTestId } = renderComponent();
+
+    waitFor(() => {
+      expect(getByTestId('productDetail')).toBeInTheDocument();
+    });
   });
 
 });
